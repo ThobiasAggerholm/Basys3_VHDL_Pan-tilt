@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Fri Apr 10 14:10:41 2020
+# Process ID: 15988
+# Current directory: C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.runs/synth_1
+# Command line: vivado.exe -log Hall_Modul.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Hall_Modul.tcl
+# Log file: C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.runs/synth_1/Hall_Modul.vds
+# Journal file: C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Hall_Modul.tcl -notrace
