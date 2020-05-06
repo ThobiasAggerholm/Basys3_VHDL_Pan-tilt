@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1586520634">
   <File Type="PA-TCL" Name="Hall_Modul.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="Hall_Modul_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Hall_Modul_reports.tcl"/>
   <File Type="RDS-RDS" Name="Hall_Modul.vds"/>
+  <File Type="RDS-DCP" Name="Hall_Modul.dcp"/>
   <File Type="RDS-UTIL" Name="Hall_Modul_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Hall_Modul_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="Hall_Modul.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="Hall_Modul_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="Hall_Modul_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/new/STANDARD_TOPLEVEL.vhd">

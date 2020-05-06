@@ -6,7 +6,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity tb_Hall_Modul is
-  generic(Counter_size : integer := 12);
+  generic(Counter_size : integer := 11);
 end tb_Hall_Modul;
 
 architecture tb of tb_Hall_Modul is
@@ -67,18 +67,35 @@ begin
         -- EDIT Adapt initialization as needed
         Chan_A <= '1';
         Chan_B <= '1';
-
+        for i in 270 downto 0 loop
         -- EDIT Add stimuli here
-        wait for 2 ns;
-        Chan_B <= '0';
-        --wait for 2 ns;
-        --Chan_A <= '0';
-        wait for 2 ns;
-        Chan_B <= '1';
-        wait for 2 ns;
+        wait for 1 ns;
         Chan_A <= '0';
+        wait for 1 ns;
+        Chan_B <= '0';
+        wait for 1 ns;
+        Chan_A <= '1';
+        wait for 1 ns;
+        Chan_B <= '1';
+        
+        end loop;
+        
+        wait for 1 ns;
+        Chan_B <= '0';
+        wait for 1 ns;
+        Chan_A <= '0';
+        wait for 1 ns;
+        Chan_B <= '1';
+        wait for 1 ns;
+        Chan_A <= '1';
+        wait for 1 ns;
+        Chan_B <= '0';
+        wait for 1 ns;
+        Chan_A <= '0';        
+        
+        
 
-        wait for 100 * TbPeriod;
+        wait for 1000 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

@@ -1,0 +1,10 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.sim/sim_1/impl/func/xsim/cfg_tb_slave_func_impl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Hall_Modul'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/new/tb_PWM_Module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_PWM_Module'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_STANDARD_TOPLEVEL'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/Desktop/tb_slave.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_slave'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/new/tb_Hall_Modul.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_Hall_Modul'

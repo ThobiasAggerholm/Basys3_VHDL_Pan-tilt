@@ -34,39 +34,38 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity slave is
-  generic(data_length : integer := 14);
+  generic(data_length : integer := 16);
   port(SClk : in std_logic;
        SS : in std_logic;
        MOSI : in std_logic;
        MISO : out std_logic;
-       Data_Rec_Buf : inout std_logic_vector(data_length-1 downto 0);
+       Data_Rec_Buf : inout std_logic_vector(data_length-1 downto 0) := X"0000";
        Data_Tra_Buf : in std_logic_vector(data_length-1 downto 0);
-       Ready_Recieve : out std_logic;
-       Ready_Transmit : out std_logic
+       Rbuf_signal : out std_logic_vector(data_length-1 downto 0);
+       TBuf_signal : out std_logic_vector(data_length-1 downto 0)
        );
 end slave;
 
 architecture Behavioral of slave is
   signal index : integer range 0 to data_length-1 := 0;
   signal TBuf : std_logic_vector(data_length-1 downto 0);
-  signal RBuf : std_logic_vector(data_length-1 downto 0);
+  signal RBuf : std_logic_vector(data_length-1 downto 0) := X"0000";
 
 begin
+  Rbuf_signal <= Rbuf;
+  Tbuf_signal <= Tbuf;
+  
   MISO <= TBuf(index) when SS = '0' else 'Z'; --Creates tri-state-buffer.
   -- If Z -> High impedance. Effectively disconnected.
 Update_TBuf_Read_RBuf : process(SS)
 begin
   if falling_edge(SS) then
     TBuf <= Data_Tra_Buf;
-    Ready_Transmit <= '0';
-    Ready_Recieve <= '0';
   end if;
   if rising_edge(SS) then
     Data_Rec_Buf <= RBuf;
-    Ready_Transmit <= '1';
-    Ready_Recieve <= '1';
   end if;
-end process;
+ end process;
 
 Update_RBuf_and_Index : process(SClk, SS)
 begin

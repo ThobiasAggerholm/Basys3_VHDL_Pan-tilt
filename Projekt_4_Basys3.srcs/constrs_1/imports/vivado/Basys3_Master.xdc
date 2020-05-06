@@ -8,11 +8,11 @@
 #use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 #Use pin J3 as clock
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets vauxp6_IBUF]
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets vauxp6_IBUF]
 #Use pin L3 as clock
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets vauxp14_IBUF]
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets vauxp14_IBUF]
 #Use pin N2 as clock. For Tri-state buffer?
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets vauxp15_TRI]
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets vauxp15_TRI]
 
 # Clock signal
 set_property -dict { PACKAGE_PIN W5 IOSTANDARD LVCMOS33 } [get_ports clk]
@@ -121,10 +121,10 @@ set_property -dict { PACKAGE_PIN U17    IOSTANDARD LVCMOS33 } [get_ports btnD]
 
 ##Pmod Header JXADC
 
-set_property -dict { PACKAGE_PIN J3     IOSTANDARD LVCMOS33 } [get_ports { vauxp6  }]; Sch name = XA1_P & Vauxp6
-set_property -dict { PACKAGE_PIN L3     IOSTANDARD LVCMOS33 } [get_ports { vauxp14 }]; Sch name = XA2_P & Vauxp14
-set_property -dict { PACKAGE_PIN M2     IOSTANDARD LVCMOS33 } [get_ports { vauxp7  }]; Sch name = XA3_P & Vauxp7
-set_property -dict { PACKAGE_PIN N2     IOSTANDARD LVCMOS33 } [get_ports { vauxp15 }]; Sch name = XA4_P & Vauxp15
+#set_property -dict { PACKAGE_PIN J3     IOSTANDARD LVCMOS33 } [get_ports { vauxp6  }]; Sch name = XA1_P & Vauxp6
+#set_property -dict { PACKAGE_PIN L3     IOSTANDARD LVCMOS33 } [get_ports { vauxp14 }]; Sch name = XA2_P & Vauxp14
+#set_property -dict { PACKAGE_PIN M2     IOSTANDARD LVCMOS33 } [get_ports { vauxp7  }]; Sch name = XA3_P & Vauxp7
+#set_property -dict { PACKAGE_PIN N2     IOSTANDARD LVCMOS33 } [get_ports { vauxp15 }]; Sch name = XA4_P & Vauxp15
 #set_property -dict { PACKAGE_PIN K3     IOSTANDARD LVCMOS33 } [get_ports { vauxn6  }]; #Sch name = XA1_N & Vauxn6
 #set_property -dict { PACKAGE_PIN M3     IOSTANDARD LVCMOS33 } [get_ports { vauxn14 }]; #Sch name = XA2_N & Vauxn14
 #set_property -dict { PACKAGE_PIN M1     IOSTANDARD LVCMOS33 } [get_ports { vauxn7  }]; #Sch name = XA3_N & Vauxn7

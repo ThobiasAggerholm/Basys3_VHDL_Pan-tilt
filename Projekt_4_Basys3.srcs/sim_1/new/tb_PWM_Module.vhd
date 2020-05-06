@@ -16,12 +16,14 @@ architecture tb of tb_PWM_Module is
     component PWM_Module
         port (clk     : in std_logic;
               val_cur : in std_logic_vector (resolution-1 downto 0);
-              pulse   : out std_logic);
+              pulse   : out std_logic;
+              cnt_test : out std_logic_vector(resolution-1 downto 0));
     end component;
 
     signal clk     : std_logic;
     signal val_cur : std_logic_vector (resolution-1 downto 0);
     signal pulse   : std_logic;
+    signal cnt_test : std_logic_vector(resolution-1 downto 0);
 
     constant TbPeriod : time := 0.01 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
@@ -32,7 +34,8 @@ begin
     dut : PWM_Module
     port map (clk     => clk,
               val_cur => val_cur,
-              pulse   => pulse);
+              pulse   => pulse,
+              cnt_test => cnt_test);
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
@@ -43,7 +46,7 @@ begin
     stimuli : process
     begin
         -- EDIT Adapt initialization as needed
-        val_cur <= X"7f";
+        val_cur <= X"7F";
 
         -- EDIT Add stimuli here
         wait for 20000000 * TbPeriod;

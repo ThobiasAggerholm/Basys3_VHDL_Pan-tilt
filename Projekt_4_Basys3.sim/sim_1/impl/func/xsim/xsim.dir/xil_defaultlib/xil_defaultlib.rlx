@@ -1,0 +1,9 @@
+0.6
+2019.2
+Nov  6 2019
+21:57:16
+C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.sim/sim_1/impl/func/xsim/cfg_tb_slave_func_impl.vhd,1587994633,vhdl,,,,hall_modul,,,,,,,,
+C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/Desktop/tb_slave.vhd,1587994570,vhdl,,,,cfg_tb_slave;tb_slave,,,,,,,,
+C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd,1586015122,vhdl,,,,cfg_tb_standard_toplevel;tb_standard_toplevel,,,,,,,,
+C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/new/tb_Hall_Modul.vhd,1586518616,vhdl,,,,cfg_tb_hall_modul;tb_hall_modul,,,,,,,,
+C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/new/tb_PWM_Module.vhd,1587585000,vhdl,,,,cfg_tb_pwm_module;tb_pwm_module,,,,,,,,

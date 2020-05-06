@@ -18,22 +18,25 @@ architecture tb of tb_slave is
               MISO           : out std_logic;
               Data_Rec_Buf   : inout std_logic_vector (data_length-1 downto 0);
               Data_Tra_Buf   : in std_logic_vector (data_length-1 downto 0);
-              Ready_Recieve  : out std_logic;
-              Ready_Transmit : out std_logic);
+              Rbuf_signal : out std_logic_vector(data_length-1 downto 0);
+              TBuf_signal : out std_logic_vector(data_length-1 downto 0)
+              );
     end component;
 
-    signal SClk           : std_logic;
-    signal SS             : std_logic;
-    signal MOSI           : std_logic;
+    signal SClk           : std_logic := '0';
+    signal SS             : std_logic := '1';
+    signal MOSI           : std_logic := '0';
     signal MISO           : std_logic;
     signal Data_Rec_Buf   : std_logic_vector (data_length-1 downto 0);
     signal Data_Tra_Buf   : std_logic_vector (data_length-1 downto 0);
-    signal Ready_Recieve  : std_logic;
-    signal Ready_Transmit : std_logic;
+    signal Rbuf_signal    : std_logic_vector(data_length-1 downto 0);
+    signal TBuf_signal    : std_logic_vector(data_length-1 downto 0);
 
     signal MasterOutData: std_logic_vector (data_length-1 downto 0);
-    signal MasterInData:  std_logic_vector (data_length-1 downto 0) := X"0000";
+    signal MasterInData: std_logic_vector (data_length-1 downto 0) := X"0000";
 
+   -------------------------------------------------------------- Clock period definitions
+   constant SClk_period : time := 20 ns;
 begin
 
     dut : slave
@@ -43,47 +46,65 @@ begin
               MISO           => MISO,
               Data_Rec_Buf   => Data_Rec_Buf,
               Data_Tra_Buf   => Data_Tra_Buf,
-              Ready_Recieve  => Ready_Recieve,
-              Ready_Transmit => Ready_Transmit);
+              Rbuf_signal    => Rbuf_signal,
+              Tbuf_signal    => Tbuf_signal
+              );
 
+    clock : process
+    begin
+        SClk <= '0'; wait for SClk_period/2;
+        SClk <= '1'; wait for SClk_period/2;
+    end process;
+    
     stimuli : process
     begin
-        -- EDIT Adapt initialization as needed
-        SClk <= '0';
-        SS <= '1';
-        MOSI <= '0';
-
+        -- Initialization
         Data_Tra_Buf <= X"1111"; -- Slave sende
         MasterOutData <= X"8444";
-        wait for 20 ns;
+        
+        -- Round one process
+        wait until rising_edge(SClk);
         SS   <= '0';
-        wait for 20 ns;
+        
         for i in data_length-1 downto 0 loop
+            
+            wait until falling_edge(SClk);
             MOSI <= MasterOutData(i);
-            wait for 20 ns;
-            SCLK   <= '1';
-            MasterInData(i) <= MISO;
-            wait for 20 ns;
-            SCLK   <= '0';
+            
+            wait until rising_edge(SClk);
+            MasterInData(i) <= MISO;         
+            -- next data ready
+            if i = 3 then
+                Data_Tra_Buf <= X"2222"; -- Slave sende -- Data fra Slave til Master
+            end if;
+            
         end loop;
-        wait for 20 ns;
+
+        wait until rising_edge(SClk);
         SS   <= '1';
 
-        ----------------------------------------------
-        Data_Tra_Buf <= X"2222"; -- Slave sende -- Data fra Slave til Master
+        -- Round 2 process
+        -- Init new master data
         MasterOutData <= X"4444"; -- Data fra Master til Slave
-        wait for 200 ns;
+
+        wait until rising_edge(SClk);
         SS   <= '0';
-        wait for 20 ns;
+        
         for i in data_length-1 downto 0 loop
+            
+            wait until falling_edge(SClk);
             MOSI <= MasterOutData(i);
-            wait for 20 ns;
-            SCLK   <= '1';
+            
+            wait until rising_edge(SClk);
             MasterInData(i) <= MISO;
-            wait for 20 ns;
-            SCLK   <= '0';
+            
+            -- next data ready
+            if i = 5 then
+                Data_Tra_Buf <= X"3432"; -- Slave sende -- Data fra Slave til Master
+            end if;
         end loop;
-        wait for 20 ns;
+        
+        wait until rising_edge(SClk);
         SS   <= '1';
 
         wait;

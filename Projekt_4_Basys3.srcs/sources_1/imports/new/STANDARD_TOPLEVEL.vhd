@@ -40,7 +40,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity STANDARD_TOPLEVEL is
   generic(
-            SPI_data_length : integer := 14;
+            SPI_data_length : integer := 16;
             PWM_resolution: integer := 8; -- number of bits used to describe max_val
             Hall_Counter_size : integer := 11
           );
@@ -60,14 +60,10 @@ architecture Behavioral of STANDARD_TOPLEVEL is
              MOSI : in std_logic;
              MISO : out std_logic;
              Data_Rec_Buf : inout std_logic_vector(SPI_data_length-1 downto 0);
-             Data_Tra_Buf : in std_logic_vector(SPI_data_length-1 downto 0);
-             Ready_Recieve : out std_logic;
-             Ready_Transmit : out std_logic
+             Data_Tra_Buf : in std_logic_vector(SPI_data_length-1 downto 0)
              );
     end component;
 
-    signal Ready_Recieve : std_logic;
-    signal Ready_Transmit : std_logic;
     signal Data_Tra_Queue :  STD_LOGIC_VECTOR(SPI_data_length-1 downto 0) := (others => '0');
     signal Data_Rec_Queue :  STD_LOGIC_VECTOR(SPI_data_length-1 downto 0);
 
@@ -112,8 +108,6 @@ begin
               SS   => vauxp14,
               MOSI => vauxp7,
               MISO => vauxp15,
-              Ready_Recieve => Ready_Recieve,
-              Ready_Transmit => Ready_Transmit,
               Data_Tra_Buf => Data_Tra_Queue,
               Data_Rec_Buf => Data_Rec_Queue
               );
