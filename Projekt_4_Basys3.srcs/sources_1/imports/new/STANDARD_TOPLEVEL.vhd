@@ -191,28 +191,31 @@ begin
 
   
   --Transmit
-  Data_Tra_Queue(2 downto 0) <= sw(2) & Hall0 & Hall1;
+  Data_Tra_Queue(1 downto 0) <= Hall0 & Hall1;
+  Data_Tra_Queue(3) <= sw(2);
   
   transmit : process(clk)
   begin
   --When data is ready to read, transmission is done.
   if sw(2) = '1' then
-  Data_Tra_Queue(Hall_Counter_size + 3 downto 3) <= motor2_out & dirB;
+  Data_Tra_Queue(2) <= dirB;
+  Data_Tra_Queue(Hall_Counter_size + 3 downto 4) <= motor2_out;
   else
-  Data_Tra_Queue(Hall_Counter_size + 3 downto 3) <= motor1_out & dirA;
+  Data_Tra_Queue(2) <= dirA;
+  Data_Tra_Queue(Hall_Counter_size + 3 downto 4) <= motor1_out;
   end if;
   end process;
   
   recieve : process(clk)
   begin
-    if sw(2) = '1' then --MotorSelect - Enable - direction - PWM 8 bit
+    if sw(2) = '0' then --MotorSelect - Enable - direction - PWM 8 bit
         enableA <= sw(0);
         dirA <= sw(1);
         PWM_dutyCycleA <= sw(PWM_resolution + 2 downto 3);          
     else
         enableB <= sw(0);
         dirB <= sw(1);
-        PWM_dutyCycleB <= Data_Rec_Queue(PWM_resolution + 2 downto 3);    
+        PWM_dutyCycleB <= sw(PWM_resolution + 2 downto 3);    
         
     end if;
   end process;

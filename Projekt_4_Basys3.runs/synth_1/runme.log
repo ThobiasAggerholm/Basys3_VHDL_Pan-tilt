@@ -15,9 +15,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12240 
+INFO: Helper process launched with PID 15696 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 835.367 ; gain = 234.563
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 834.328 ; gain = 233.973
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'STANDARD_TOPLEVEL' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:75]
 	Parameter SPI_data_length bound to: 16 - type: integer 
@@ -55,11 +55,10 @@ INFO: [Synth 8-3491] module 'H_bridge' declared at 'C:/Users/Thobi/CloudStation/
 INFO: [Synth 8-638] synthesizing module 'H_bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:44]
 INFO: [Synth 8-256] done synthesizing module 'H_bridge' (4#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:44]
 INFO: [Synth 8-3491] module 'H_bridge' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:34' bound to instance 'Motor2' of component 'H_Bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:182]
-WARNING: [Synth 8-614] signal 'motor2_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
-WARNING: [Synth 8-614] signal 'dirB' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
-WARNING: [Synth 8-614] signal 'motor1_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
-WARNING: [Synth 8-614] signal 'dirA' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
-WARNING: [Synth 8-614] signal 'Data_Rec_Queue' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:206]
+WARNING: [Synth 8-614] signal 'dirB' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:197]
+WARNING: [Synth 8-614] signal 'motor2_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:197]
+WARNING: [Synth 8-614] signal 'dirA' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:197]
+WARNING: [Synth 8-614] signal 'motor1_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:197]
 INFO: [Synth 8-256] done synthesizing module 'STANDARD_TOPLEVEL' (5#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:75]
 WARNING: [Synth 8-3331] design Hall_Modul has unconnected port clk
 WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[15]
@@ -68,7 +67,7 @@ WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[13]
 WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[12]
 WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[11]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 907.766 ; gain = 306.961
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 907.879 ; gain = 307.523
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -81,12 +80,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 907.766 ; gain = 306.961
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 907.879 ; gain = 307.523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 907.766 ; gain = 306.961
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 907.879 ; gain = 307.523
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 907.766 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 907.879 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -121,38 +120,38 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/STANDARD_TOPLEVEL_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1006.258 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1006.602 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1006.258 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1006.602 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1006.602 ; gain = 406.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1006.602 ; gain = 406.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1006.602 ; gain = 406.246
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:57]
 WARNING: [Synth 8-327] inferring latch for variable 'counter_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:63]
 WARNING: [Synth 8-327] inferring latch for variable 'data_def_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:76]
 WARNING: [Synth 8-327] inferring latch for variable 'enableA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:174]
-WARNING: [Synth 8-327] inferring latch for variable 'dirA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:210]
+WARNING: [Synth 8-327] inferring latch for variable 'dirA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:213]
 WARNING: [Synth 8-327] inferring latch for variable 'enableB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:183]
-WARNING: [Synth 8-327] inferring latch for variable 'dirB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:214]
+WARNING: [Synth 8-327] inferring latch for variable 'dirB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:217]
 WARNING: [Synth 8-327] inferring latch for variable 'PWM_dutyCycleA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:147]
 WARNING: [Synth 8-327] inferring latch for variable 'PWM_dutyCycleB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:153]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.602 ; gain = 406.246
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -176,8 +175,7 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 3     
 	                1 Bit    Registers := 4     
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 1     
-	   2 Input     12 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
 	   2 Input     11 Bit        Muxes := 6     
 	   2 Input      4 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
@@ -193,7 +191,7 @@ Hierarchical RTL Component report
 Module STANDARD_TOPLEVEL 
 Detailed RTL Component Info : 
 +---Muxes : 
-	   2 Input     12 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
 Module slave 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -242,7 +240,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-WARNING: [Synth 8-3936] Found unconnected internal register 'SPI_SL/Data_Rec_Buf_reg' and it is trimmed from '16' to '11' bits. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd:62]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port vauxp7
 WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[15]
 WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[14]
 WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[13]
@@ -353,7 +351,7 @@ INFO: [Common 17-14] Message 'Synth 8-264' appears 100 times and further instanc
 WARNING: [Synth 8-3332] Sequential element (MotorEncoder1/data_def_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
 WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/data_def_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1006.258 ; gain = 405.453
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1006.602 ; gain = 406.246
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -365,13 +363,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1006.258 ; gain = 405.453
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 1006.602 ; gain = 406.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1006.473 ; gain = 405.668
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1007.738 ; gain = 407.383
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -405,7 +403,7 @@ WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/counter_reg[2]) is unu
 WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/counter_reg[1]) is unused and will be removed from module STANDARD_TOPLEVEL.
 WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/counter_reg[0]) is unused and will be removed from module STANDARD_TOPLEVEL.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1007.625 ; gain = 406.820
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1009.273 ; gain = 408.918
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -429,13 +427,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -454,25 +452,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -494,50 +492,49 @@ Report Cell Usage:
 |4     |LUT2   |    18|
 |5     |LUT3   |     8|
 |6     |LUT4   |    46|
-|7     |LUT5   |     8|
-|8     |LUT6   |    19|
-|9     |FDPE   |     4|
-|10    |FDRE   |    48|
-|11    |LD     |    20|
-|12    |IBUF   |    17|
-|13    |OBUF   |     6|
-|14    |OBUFT  |     1|
+|7     |LUT6   |    19|
+|8     |FDPE   |     4|
+|9     |FDRE   |    32|
+|10    |LD     |    20|
+|11    |IBUF   |    16|
+|12    |OBUF   |     6|
+|13    |OBUFT  |     1|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+------------------+-------------+------+
 |      |Instance          |Module       |Cells |
 +------+------------------+-------------+------+
-|1     |top               |             |   212|
+|1     |top               |             |   187|
 |2     |  PWM_ControllerA |PWM_Module   |    62|
 |3     |  PWM_ControllerB |PWM_Module_0 |    62|
-|4     |  SPI_SL          |slave        |    39|
+|4     |  SPI_SL          |slave        |    15|
 +------+------------------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 506 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:42 . Memory (MB): peak = 1012.305 ; gain = 313.008
-Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:40 . Memory (MB): peak = 1014.055 ; gain = 314.977
+Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1014.055 ; gain = 413.699
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1012.305 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1014.055 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 28 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 10 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1022.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1022.922 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 20 instances were transformed.
   LD => LDCE: 10 instances
   LD => LDCE (inverted pins: G): 10 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-32 Infos, 167 Warnings, 8 Critical Warnings and 0 Errors encountered.
+32 Infos, 166 Warnings, 8 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1022.027 ; gain = 716.250
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1022.027 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 1022.922 ; gain = 717.531
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1022.922 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.runs/synth_1/STANDARD_TOPLEVEL.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file STANDARD_TOPLEVEL_utilization_synth.rpt -pb STANDARD_TOPLEVEL_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon May 25 15:09:58 2020...
+INFO: [Common 17-206] Exiting Vivado at Mon May 25 16:52:58 2020...

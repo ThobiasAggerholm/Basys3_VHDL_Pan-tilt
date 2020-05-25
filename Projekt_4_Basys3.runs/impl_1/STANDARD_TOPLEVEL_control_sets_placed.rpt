@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Mon May 25 15:10:52 2020
+| Date         : Mon May 25 16:53:52 2020
 | Host         : DESKTOP-HA0SSCD running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file STANDARD_TOPLEVEL_control_sets_placed.rpt
 | Design       : STANDARD_TOPLEVEL
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    18 |
-|    Minimum number of control sets                        |    18 |
+| Total control sets                                       |     9 |
+|    Minimum number of control sets                        |     9 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    88 |
+| Unused register locations in slices containing registers |    32 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    18 |
-| >= 0 to < 4        |     8 |
+| Total control sets |     9 |
+| >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     5 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     3 |
+| >= 8 to < 10       |     2 |
 | >= 10 to < 12      |     2 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              36 |           24 |
-| No           | No                    | Yes                    |               4 |            2 |
-| No           | Yes                   | No                     |               8 |            2 |
-| Yes          | No                    | No                     |              24 |           13 |
+| No           | No                    | No                     |              28 |           20 |
+| No           | No                    | Yes                    |               4 |            1 |
+| No           | Yes                   | No                     |               8 |            3 |
+| Yes          | No                    | No                     |              16 |            6 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -73,24 +73,15 @@ Table of Contents
 +-------------------+--------------------------+--------------------------+------------------+----------------+
 |    Clock Signal   |       Enable Signal      |     Set/Reset Signal     | Slice Load Count | Bel Load Count |
 +-------------------+--------------------------+--------------------------+------------------+----------------+
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[4]         |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[5]         |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[10]        |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[6]         |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[9]         |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[8]         |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[3]         |                          |                1 |              1 |
-|  vauxp6_IBUF_BUFG | SPI_SL/p_0_in[7]         |                          |                1 |              1 |
-|  clk_IBUF_BUFG    |                          |                          |                4 |              4 |
+|  vauxp6_IBUF_BUFG |                          | vauxp15_TRI_BUFG         |                1 |              4 |
+|  clk_IBUF_BUFG    |                          |                          |                3 |              4 |
+|  clk_IBUF_BUFG    |                          | PWM_ControllerA/eqOp2_in |                2 |              4 |
 |  clk_IBUF_BUFG    |                          | PWM_ControllerB/eqOp2_in |                1 |              4 |
-|  clk_IBUF_BUFG    |                          | PWM_ControllerA/eqOp2_in |                1 |              4 |
 | ~vauxp15_TRI_BUFG |                          |                          |                2 |              4 |
-|  vauxp6_IBUF_BUFG |                          | vauxp15_TRI_BUFG         |                2 |              4 |
+|  clk_IBUF_BUFG    | PWM_ControllerA/eqOp2_in |                          |                3 |              8 |
 |  clk_IBUF_BUFG    | PWM_ControllerB/eqOp2_in |                          |                3 |              8 |
-|  clk_IBUF_BUFG    | PWM_ControllerA/eqOp2_in |                          |                2 |              8 |
-|  vauxp15_TRI_BUFG |                          |                          |                6 |              8 |
 |  sw_IBUF_BUFG[2]  |                          |                          |                7 |             10 |
-| ~sw_IBUF_BUFG[2]  |                          |                          |                5 |             10 |
+| ~sw_IBUF_BUFG[2]  |                          |                          |                8 |             10 |
 +-------------------+--------------------------+--------------------------+------------------+----------------+
 
 
