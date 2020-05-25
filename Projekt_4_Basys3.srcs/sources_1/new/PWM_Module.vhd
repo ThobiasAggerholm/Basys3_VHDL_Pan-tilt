@@ -20,6 +20,7 @@
 
 
 library IEEE;
+use IEEE.STD_LOGIC_ARITH.ALL;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
@@ -27,14 +28,14 @@ entity PWM_Module is
 	generic(
 		resolution: integer := 8; -- number of bits used to describe max_val
 		clk_resolution: integer := 4;
-		clk_divider : std_logic_vector := X"8"; --8 tæller 9 gange (Fase korrigeret PWM 512 tick pr. periode -> approx 21701,39 Hz clk)
+		clk_divider : std_logic_vector := X"8"; --8 tæller 9 gange (Fase korrigeret PWM 510 tick pr. periode -> approx 21,786 Hz clk)
 		clk_div_reset : std_logic_vector := X"0";
 		cnt_reset : std_logic_vector := X"00"
 	);
 	port(
 		clk: in std_logic; -- clock input
-		-- Example: if val_cur is set to half of max_val duty cycle will be 50%
-		val_cur: in std_logic_vector( resolution-1 downto 0); -- Length depends on max_val
+		-- Example: if val_cur is set to half of max_val duty cycle will be approx. 50%
+		val_cur: in std_logic_vector( resolution-1 downto 0) := ( others => '0'); -- Length depends on max_val
 		pulse: out std_logic := '0'; -- single bit which represents the output
 		cnt_test : out std_logic_vector(resolution-1 downto 0)
 	);
@@ -84,14 +85,25 @@ end process;
 process(clk) -- Pulsing. Initial high PWM
 begin
 	if(rising_edge(clk)) then
-		if (val_cur > cnt) and val_cur > 0 then -- check val_cur related to the counter
-		-- when the counter passes val_cur it inverts the output
-			pulse <= '1'; -- pulse high = PWM high
-		elsif val_cur = X"FF" then
-		    pulse <= '1';
-		else
-			pulse <= '0'; -- pulse low = PWM low
-		end if;
+        if cnt_dir = '1' then
+            if val_cur > cnt then
+                pulse <= '1'; -- pulse high = PWM high
+            elsif val_cur = cnt_max then
+                pulse <= '1'; -- pulse high = PWM high
+            else 
+                pulse <= '0'; -- pulse low = PWM low
+            end if;
+        end if;
+        
+        if cnt_dir = '0' then
+            if val_cur = cnt_min then
+                pulse <= '0';
+            elsif val_cur >= cnt then
+                pulse <= '1'; -- pulse high = PWM high
+            else
+                pulse <= '0';
+            end if;
+        end if;
 	end if;
 end process;
 

@@ -1,7 +1,7 @@
-Running: xsim.dir/tb_Hall_Modul_behav/xsimk.exe -simmode gui -wdb tb_Hall_Modul_behav.wdb -simrunnum 0 -socket 59205
+Running: xsim.dir/tb_Hall_Modul_behav/xsimk.exe -simmode gui -wdb tb_Hall_Modul_behav.wdb -simrunnum 0 -socket 61630
 Design successfully loaded
-Design Loading Memory Usage: 5296 KB (Peak: 5296 KB)
-Design Loading CPU Usage: 46 ms
+Design Loading Memory Usage: 5344 KB (Peak: 5344 KB)
+Design Loading CPU Usage: 15 ms
 Simulation completed
-Simulation Memory Usage: 6312 KB (Peak: 6312 KB)
-Simulation CPU Usage: 61 ms
+Simulation Memory Usage: 6408 KB (Peak: 6408 KB)
+Simulation CPU Usage: 15 ms

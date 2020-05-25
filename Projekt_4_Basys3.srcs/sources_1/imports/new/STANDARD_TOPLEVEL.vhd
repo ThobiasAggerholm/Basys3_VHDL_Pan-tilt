@@ -44,13 +44,44 @@ entity STANDARD_TOPLEVEL is
             PWM_resolution: integer := 8; -- number of bits used to describe max_val
             Hall_Counter_size : integer := 11
           );
-    Port ( clk : in STD_LOGIC;
-           vauxp6 : in STD_LOGIC;
-           vauxp14 : in STD_LOGIC;
-           vauxp7 : in STD_LOGIC;
-           vauxp15 : out STD_LOGIC;
-           led : out STD_LOGIC_VECTOR(SPI_data_length-1 downto 0);
-           sw : in STD_LOGIC_VECTOR(PWM_resolution-1 downto 0));
+    Port ( clk      : in STD_LOGIC;
+            --SPI pins
+           vauxp6   : in STD_LOGIC; -- SCLK
+           vauxp14  : in STD_LOGIC; -- SS
+           vauxp7   : in STD_LOGIC; -- MOSI
+           vauxp15  : out STD_LOGIC; -- MISO
+           -- Frame sensors
+           HALL0    : in STD_LOGIC;
+           HALL1    : in STD_LOGIC;
+           -- Motor sensors
+           CHAN_A1  : in STD_LOGIC;
+           CHAN_A2  : in STD_LOGIC;
+           CHAN_B1  : in STD_LOGIC;
+           CHAN_B2  : in STD_LOGIC;
+           --H-Bridge
+           ENA      : out STD_LOGIC;
+           IN1A     : out STD_LOGIC;
+           IN2A     : out STD_LOGIC;
+           ENB      : out STD_LOGIC;
+           IN1B     : out STD_LOGIC;
+           IN2B     : out STD_LOGIC;
+           
+           --Simulations porte:
+           -- Positions countere
+           POS1    : out std_logic_vector (Hall_Counter_size-1 downto 0);
+           POS2    : out std_logic_vector (Hall_Counter_size-1 downto 0);
+           
+           --SPI Buffers
+           RECEIVE_BUFFER : out std_logic_vector(SPI_data_length-1 downto 0);
+           TRANSMIT_BUFFER : out std_logic_vector(SPI_data_length-1 downto 0);
+           
+           --PWM buffer and puls
+           PWM_DUTYCYCLE1 : out std_logic_vector( PWM_resolution-1 downto 0);
+           PWM_DUTYCYCLE2 : out std_logic_vector( PWM_resolution-1 downto 0);
+           
+           PWM_PULSE1 : out std_logic;
+           PWM_PULSE2 : out std_logic    
+           );
 end STANDARD_TOPLEVEL;
 
 architecture Behavioral of STANDARD_TOPLEVEL is
@@ -65,7 +96,7 @@ architecture Behavioral of STANDARD_TOPLEVEL is
     end component;
 
     signal Data_Tra_Queue :  STD_LOGIC_VECTOR(SPI_data_length-1 downto 0) := (others => '0');
-    signal Data_Rec_Queue :  STD_LOGIC_VECTOR(SPI_data_length-1 downto 0);
+    signal Data_Rec_Queue :  STD_LOGIC_VECTOR(SPI_data_length-1 downto 0) := (others => '1');
 
     component PWM_Module is
     	port(
@@ -76,8 +107,7 @@ architecture Behavioral of STANDARD_TOPLEVEL is
     	);
     end component;
 
-    signal PWM_output : std_logic;
-    signal PWM_dutyCycle :  std_logic_vector( PWM_resolution-1 downto 0); -- Length depends on max_val
+    
 
     component Hall_Modul is
     port (
@@ -97,11 +127,31 @@ architecture Behavioral of STANDARD_TOPLEVEL is
     );
     end component;
     
-    signal motor0_out : std_logic_vector (Hall_Counter_size-1 downto 0);
     signal motor1_out : std_logic_vector (Hall_Counter_size-1 downto 0);
+    signal motor2_out : std_logic_vector (Hall_Counter_size-1 downto 0);
     
-    signal Rec_Motor_sel : std_logic;
     signal Tra_Motor_sel : std_logic := '0';
+    
+    component H_Bridge is
+    Port (  Enable      : in STD_LOGIC := '0';
+            EN          : out STD_LOGIC;
+            IN1         : out STD_LOGIC := '0';
+            IN2         : out STD_LOGIC := '0';
+            dir         : in  STD_LOGIC;
+            PWM_pulse   : in  STD_LOGIC
+        );
+    end component;
+    
+    signal dirA : STD_LOGIC;
+    signal enableA : STD_LOGIC := '0';
+    signal PWM_pulseA : STD_LOGIC := '0';
+    signal PWM_dutyCycleA :  std_logic_vector( PWM_resolution-1 downto 0) := ( others => '0'); -- Length depends on max_val
+    
+    signal dirB : STD_LOGIC;
+    signal enableB : STD_LOGIC := '0';
+    signal PWM_pulseB : STD_LOGIC := '0';
+    signal PWM_dutyCycleB :  std_logic_vector( PWM_resolution-1 downto 0) := ( others => '0'); -- Length depends on max_val
+    
 begin
    SPI_SL : slave
    port map ( SClk => vauxp6,
@@ -112,34 +162,22 @@ begin
               Data_Rec_Buf => Data_Rec_Queue
               );
 
-    PWM_Controller : PWM_Module
+    PWM_ControllerA : PWM_Module
     port map (  clk => clk,
-                val_cur => PWM_dutyCycle,
-                pulse => PWM_output
+                val_cur => PWM_dutyCycleA,
+                pulse => PWM_pulseA
+             );
+             
+    PWM_ControllerB : PWM_Module
+    port map (  clk => clk,
+                val_cur => PWM_dutyCycleB,
+                pulse => PWM_pulseB
              );
     
-    Motor0 : Hall_Modul
+    MotorEncoder1 : Hall_Modul
     port map (  clk => clk,
-                Chan_A => open,
-                Chan_B => open,
-                Hall_counter => motor0_out, 
-                
-                Tdirection => open,
-                TA_prev => open,
-                TB_prev => open,
-                TA_curr => open,
-                TB_curr => open,
-                
-                TA_in => open,
-                TB_in => open
-    );
-    
-    
-    
-    Motor1 : Hall_Modul
-    port map (  clk => clk,
-                Chan_A => open,
-                Chan_B => open,
+                Chan_A => CHAN_A1,
+                Chan_B => CHAN_B1,
                 Hall_counter => motor1_out, 
                 
                 Tdirection => open,
@@ -152,24 +190,83 @@ begin
                 TB_in => open
     );
     
-
-  PWM_dutyCycle <= Data_Rec_Queue(PWM_resolution -1 downto 0);
-  Rec_Motor_sel <= Data_rec_Queue(PWM_resolution);
-
-  led <= "000" & Rec_Motor_sel & PWM_output;
+    
+    
+    MotorEncoder2 : Hall_Modul
+    port map (  clk => clk,
+                Chan_A => CHAN_A2,
+                Chan_B => CHAN_B2,
+                Hall_counter => motor2_out, 
+                
+                Tdirection => open,
+                TA_prev => open,
+                TB_prev => open,
+                TA_curr => open,
+                TB_curr => open,
+                
+                TA_in => open,
+                TB_in => open
+    );
+    
+    Motor1 : H_bridge
+    port map ( Enable => enableA,
+               EN     => ENA,
+               IN1    => IN1A,
+               IN2    => IN2A,
+               dir    => dirA,
+               PWM_pulse => PWM_pulseA
+    );
+    
+    Motor2 : H_bridge
+    port map ( Enable => enableB,
+               EN     => ENB,
+               IN1    => IN1B,
+               IN2    => IN2B,
+               dir    => dirB,
+               PWM_pulse => PWM_pulseB
+    );
+    
+ -- SIMULATION PORTS:
+ POS1 <= motor1_out;
+ POS2 <= motor2_out;
+ 
+ TRANSMIT_BUFFER<= Data_Tra_Queue;
+ RECEIVE_BUFFER <= Data_Rec_Queue;
+ 
+ PWM_DUTYCYCLE1 <= PWM_dutyCycleA;
+ PWM_DUTYCYCLE2 <= PWM_dutyCycleB;
+ 
+ PWM_PULSE1 <= PWM_pulseA;
+ PWM_PULSE2 <= PWM_pulseB;
   
-  process(clk)
+  --Transmit
+  Data_Tra_Queue(Hall_Counter_size + 2 downto Hall_Counter_size) <= Hall1 & Hall0 & Data_Rec_Queue(10);
+  
+  transmit : process(clk)
   begin
-  
-  Tra_Motor_sel <= Tra_Motor_sel XOR '1';
-  Data_Tra_Queue(Hall_Counter_size) <= Tra_Motor_sel;
-  
-      if Tra_Motor_sel = '1' then
-        Data_Tra_Queue(Hall_Counter_size downto 0) <= Tra_Motor_sel & motor1_out;
-      else
-        Data_Tra_Queue(Hall_Counter_size downto 0) <= Tra_Motor_sel & motor0_out;
-      end if;
-      
+  --When data is ready to read, transmission is done.
+  if Data_Rec_Queue(10) = '1' then
+  Data_Tra_Queue(Hall_Counter_size -1 downto 0) <= motor2_out;
+  else
+  Data_Tra_Queue(Hall_Counter_size -1 downto 0) <= motor1_out;
+  end if;
   end process;
+  
+  recieve : process(clk)
+  begin
+    if Data_Rec_Queue(10) = '1' then --MotorSelect - Enable - direction - PWM 8 bit
+        enableA <= Data_Rec_Queue(9);
+        dirA <= Data_Rec_Queue(8);
+        PWM_dutyCycleA <= Data_Rec_Queue(PWM_resolution -1 downto 0);          
+    else
+        enableB <= Data_Rec_Queue(9);
+        dirB <= Data_Rec_Queue(8);
+        PWM_dutyCycleB <= Data_Rec_Queue(PWM_resolution -1 downto 0);    
+        
+    end if;
+  end process;
+  
+
+  
 
 end Behavioral;

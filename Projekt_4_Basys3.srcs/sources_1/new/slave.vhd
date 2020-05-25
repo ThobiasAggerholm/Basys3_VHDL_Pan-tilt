@@ -40,9 +40,7 @@ entity slave is
        MOSI : in std_logic;
        MISO : out std_logic;
        Data_Rec_Buf : inout std_logic_vector(data_length-1 downto 0) := X"0000";
-       Data_Tra_Buf : in std_logic_vector(data_length-1 downto 0);
-       Rbuf_signal : out std_logic_vector(data_length-1 downto 0);
-       TBuf_signal : out std_logic_vector(data_length-1 downto 0)
+       Data_Tra_Buf : in std_logic_vector(data_length-1 downto 0)
        );
 end slave;
 
@@ -52,8 +50,6 @@ architecture Behavioral of slave is
   signal RBuf : std_logic_vector(data_length-1 downto 0) := X"0000";
 
 begin
-  Rbuf_signal <= Rbuf;
-  Tbuf_signal <= Tbuf;
   
   MISO <= TBuf(index) when SS = '0' else 'Z'; --Creates tri-state-buffer.
   -- If Z -> High impedance. Effectively disconnected.
