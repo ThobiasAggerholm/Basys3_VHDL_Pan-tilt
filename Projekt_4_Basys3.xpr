@@ -120,14 +120,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PSRCDIR/sim_1/new/tb_STANDARD_TOPLEVEL.vhd"/>
-          <Attr Name="ImportTime" Val="1585913229"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sim_1/imports/Desktop/tb_slave.vhd">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../Desktop/tb_slave.vhd"/>

@@ -15,20 +15,20 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 17284 
+INFO: Helper process launched with PID 12240 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 835.297 ; gain = 233.770
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 835.367 ; gain = 234.563
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'STANDARD_TOPLEVEL' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:70]
+INFO: [Synth 8-638] synthesizing module 'STANDARD_TOPLEVEL' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:75]
 	Parameter SPI_data_length bound to: 16 - type: integer 
 	Parameter PWM_resolution bound to: 8 - type: integer 
 	Parameter Hall_Counter_size bound to: 11 - type: integer 
-INFO: [Synth 8-3491] module 'slave' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd:36' bound to instance 'SPI_SL' of component 'slave' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:139]
+INFO: [Synth 8-3491] module 'slave' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd:36' bound to instance 'SPI_SL' of component 'slave' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:136]
 INFO: [Synth 8-638] synthesizing module 'slave' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd:47]
 	Parameter data_length bound to: 16 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'slave' (1#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd:47]
-WARNING: [Synth 8-5640] Port 'cnt_test' is missing in component declaration [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:84]
-INFO: [Synth 8-3491] module 'PWM_Module' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:27' bound to instance 'PWM_ControllerA' of component 'PWM_Module' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:148]
+WARNING: [Synth 8-5640] Port 'cnt_test' is missing in component declaration [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:89]
+INFO: [Synth 8-3491] module 'PWM_Module' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:27' bound to instance 'PWM_ControllerA' of component 'PWM_Module' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:145]
 INFO: [Synth 8-638] synthesizing module 'PWM_Module' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:44]
 	Parameter resolution bound to: 8 - type: integer 
 	Parameter clk_resolution bound to: 4 - type: integer 
@@ -36,34 +36,39 @@ INFO: [Synth 8-638] synthesizing module 'PWM_Module' [C:/Users/Thobi/CloudStatio
 	Parameter clk_div_reset bound to: 4'b0000 
 	Parameter cnt_reset bound to: 8'b00000000 
 INFO: [Synth 8-256] done synthesizing module 'PWM_Module' (2#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:44]
-WARNING: [Synth 8-5640] Port 'cnt_test' is missing in component declaration [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:84]
-INFO: [Synth 8-3491] module 'PWM_Module' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:27' bound to instance 'PWM_ControllerB' of component 'PWM_Module' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:154]
-INFO: [Synth 8-3491] module 'Hall_Modul' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:36' bound to instance 'MotorEncoder1' of component 'Hall_Modul' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:160]
-INFO: [Synth 8-638] synthesizing module 'Hall_Modul' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:56]
+WARNING: [Synth 8-5640] Port 'cnt_test' is missing in component declaration [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:89]
+INFO: [Synth 8-3491] module 'PWM_Module' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:27' bound to instance 'PWM_ControllerB' of component 'PWM_Module' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:151]
+INFO: [Synth 8-3491] module 'Hall_Modul' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:36' bound to instance 'MotorEncoder1' of component 'Hall_Modul' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:157]
+INFO: [Synth 8-638] synthesizing module 'Hall_Modul' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:46]
 	Parameter Counter_size bound to: 11 - type: integer 
-WARNING: [Synth 8-614] signal 'A_in' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'Chan_A' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'B_in' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'Chan_B' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'data_def' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'A_curr' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'B_curr' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-WARNING: [Synth 8-614] signal 'counter' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:84]
-INFO: [Synth 8-256] done synthesizing module 'Hall_Modul' (3#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:56]
-INFO: [Synth 8-3491] module 'Hall_Modul' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:36' bound to instance 'MotorEncoder2' of component 'Hall_Modul' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:178]
-INFO: [Synth 8-3491] module 'H_bridge' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:34' bound to instance 'Motor1' of component 'H_Bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:194]
+WARNING: [Synth 8-614] signal 'A_in' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'Chan_A' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'B_in' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'Chan_B' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'data_def' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'A_curr' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'B_curr' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+WARNING: [Synth 8-614] signal 'counter' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:67]
+INFO: [Synth 8-256] done synthesizing module 'Hall_Modul' (3#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:46]
+INFO: [Synth 8-3491] module 'Hall_Modul' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:36' bound to instance 'MotorEncoder2' of component 'Hall_Modul' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:166]
+INFO: [Synth 8-3491] module 'H_bridge' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:34' bound to instance 'Motor1' of component 'H_Bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:173]
 INFO: [Synth 8-638] synthesizing module 'H_bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:44]
 INFO: [Synth 8-256] done synthesizing module 'H_bridge' (4#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:44]
-INFO: [Synth 8-3491] module 'H_bridge' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:34' bound to instance 'Motor2' of component 'H_Bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:203]
-WARNING: [Synth 8-614] signal 'Data_Rec_Queue' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:212]
-WARNING: [Synth 8-614] signal 'HALL0' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:212]
-WARNING: [Synth 8-614] signal 'motor2_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:212]
-WARNING: [Synth 8-614] signal 'HALL1' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:212]
-WARNING: [Synth 8-614] signal 'motor1_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:212]
-INFO: [Synth 8-256] done synthesizing module 'STANDARD_TOPLEVEL' (5#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:70]
+INFO: [Synth 8-3491] module 'H_bridge' declared at 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd:34' bound to instance 'Motor2' of component 'H_Bridge' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:182]
+WARNING: [Synth 8-614] signal 'motor2_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
+WARNING: [Synth 8-614] signal 'dirB' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
+WARNING: [Synth 8-614] signal 'motor1_out' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
+WARNING: [Synth 8-614] signal 'dirA' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:196]
+WARNING: [Synth 8-614] signal 'Data_Rec_Queue' is read in the process but is not in the sensitivity list [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:206]
+INFO: [Synth 8-256] done synthesizing module 'STANDARD_TOPLEVEL' (5#1) [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:75]
 WARNING: [Synth 8-3331] design Hall_Modul has unconnected port clk
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[15]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[14]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[13]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[12]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[11]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 907.695 ; gain = 306.168
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 907.766 ; gain = 306.961
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -76,12 +81,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 907.695 ; gain = 306.168
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 907.766 ; gain = 306.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 907.695 ; gain = 306.168
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 907.766 ; gain = 306.961
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 907.695 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 907.766 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -96,58 +101,58 @@ Resolution: If [get_<value>] was used to populate the object, check to make sure
 WARNING: [Vivado 12-507] No nets matched 'vauxp15_TRI'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:15]
 CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:15]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'vauxn6'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:146]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:146]
+WARNING: [Vivado 12-507] No nets matched 'sw_IBUF[2]'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:22]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'vauxn14'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:147]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:147]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'vauxn7'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:148]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:148]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'vauxn15'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:149]
+WARNING: [Vivado 12-584] No ports matched 'vauxn6'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:149]
 CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:149]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxn14'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:150]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:150]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxn7'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:151]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:151]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxn15'. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:152]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc:152]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/constrs_1/imports/vivado/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/STANDARD_TOPLEVEL_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/STANDARD_TOPLEVEL_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1008.551 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1006.258 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1008.551 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1006.258 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1008.551 ; gain = 407.023
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1008.551 ; gain = 407.023
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1008.551 ; gain = 407.023
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd:57]
-WARNING: [Synth 8-327] inferring latch for variable 'counter_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:73]
-WARNING: [Synth 8-327] inferring latch for variable 'direction_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:75]
-WARNING: [Synth 8-327] inferring latch for variable 'A_prev_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:76]
-WARNING: [Synth 8-327] inferring latch for variable 'B_prev_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:77]
-WARNING: [Synth 8-327] inferring latch for variable 'data_def_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:93]
-WARNING: [Synth 8-327] inferring latch for variable 'enableA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:195]
-WARNING: [Synth 8-327] inferring latch for variable 'dirA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:199]
-WARNING: [Synth 8-327] inferring latch for variable 'enableB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:204]
-WARNING: [Synth 8-327] inferring latch for variable 'dirB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:208]
-WARNING: [Synth 8-327] inferring latch for variable 'PWM_dutyCycleA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:150]
-WARNING: [Synth 8-327] inferring latch for variable 'PWM_dutyCycleB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:156]
+WARNING: [Synth 8-327] inferring latch for variable 'counter_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:63]
+WARNING: [Synth 8-327] inferring latch for variable 'data_def_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd:76]
+WARNING: [Synth 8-327] inferring latch for variable 'enableA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:174]
+WARNING: [Synth 8-327] inferring latch for variable 'dirA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:210]
+WARNING: [Synth 8-327] inferring latch for variable 'enableB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:183]
+WARNING: [Synth 8-327] inferring latch for variable 'dirB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:214]
+WARNING: [Synth 8-327] inferring latch for variable 'PWM_dutyCycleA_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:147]
+WARNING: [Synth 8-327] inferring latch for variable 'PWM_dutyCycleB_reg' [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd:153]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1008.551 ; gain = 407.023
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1006.258 ; gain = 405.453
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -164,7 +169,7 @@ Detailed RTL Component Info :
 	   2 Input      8 Bit       Adders := 2     
 	   2 Input      4 Bit       Adders := 3     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 6     
 +---Registers : 
 	               16 Bit    Registers := 3     
 	                8 Bit    Registers := 2     
@@ -172,11 +177,12 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 4     
 +---Muxes : 
 	   2 Input     16 Bit        Muxes := 1     
-	   2 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 1     
 	   2 Input     11 Bit        Muxes := 6     
 	   2 Input      4 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 10    
+	   3 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -187,7 +193,7 @@ Hierarchical RTL Component report
 Module STANDARD_TOPLEVEL 
 Detailed RTL Component Info : 
 +---Muxes : 
-	   2 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 1     
 Module slave 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -209,19 +215,17 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input      2 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
 Module Hall_Modul 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     11 Bit       Adders := 2     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 3     
 +---Muxes : 
 	   2 Input     11 Bit        Muxes := 3     
-	   2 Input      1 Bit        Muxes := 4     
-Module H_bridge 
-Detailed RTL Component Info : 
-+---Muxes : 
-	   2 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -239,6 +243,11 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 WARNING: [Synth 8-3936] Found unconnected internal register 'SPI_SL/Data_Rec_Buf_reg' and it is trimmed from '16' to '11' bits. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd:62]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[15]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[14]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[13]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[12]
+WARNING: [Synth 8-3331] design STANDARD_TOPLEVEL has unconnected port sw[11]
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[10]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[10]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[10]  is always disabled
@@ -283,6 +292,7 @@ WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[0]  is always 
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[0]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[0]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[0]  is always disabled
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\SPI_SL/TBuf_reg[15] )
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[10]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[10]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[10]  is always disabled
@@ -327,14 +337,6 @@ WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[0]  is always 
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[0]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[0]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[0]  is always disabled
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder1/direction_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder1/A_prev_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder1/B_prev_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder1/data_def_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/direction_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/A_prev_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/B_prev_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
-WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/data_def_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[10]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[10]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[10]  is always disabled
@@ -348,8 +350,10 @@ WARNING: [Synth 8-264] enable of latch \MotorEncoder2/counter_reg[8]  is always 
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[8]  is always disabled
 WARNING: [Synth 8-264] enable of latch \MotorEncoder1/counter_reg[8]  is always disabled
 INFO: [Common 17-14] Message 'Synth 8-264' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (MotorEncoder1/data_def_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
+WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/data_def_reg) is unused and will be removed from module STANDARD_TOPLEVEL.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1008.551 ; gain = 407.023
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1006.258 ; gain = 405.453
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -361,13 +365,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1008.551 ; gain = 407.023
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1006.258 ; gain = 405.453
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1011.742 ; gain = 410.215
+Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1006.473 ; gain = 405.668
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -401,7 +405,7 @@ WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/counter_reg[2]) is unu
 WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/counter_reg[1]) is unused and will be removed from module STANDARD_TOPLEVEL.
 WARNING: [Synth 8-3332] Sequential element (MotorEncoder2/counter_reg[0]) is unused and will be removed from module STANDARD_TOPLEVEL.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1012.895 ; gain = 411.367
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1007.625 ; gain = 406.820
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -425,13 +429,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -450,25 +454,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -484,18 +488,18 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     3|
-|2     |CARRY4 |     6|
+|1     |BUFG   |     4|
+|2     |CARRY4 |     8|
 |3     |LUT1   |     5|
-|4     |LUT2   |    20|
-|5     |LUT3   |     3|
-|6     |LUT4   |    34|
-|7     |LUT5   |    15|
-|8     |LUT6   |     5|
+|4     |LUT2   |    18|
+|5     |LUT3   |     8|
+|6     |LUT4   |    46|
+|7     |LUT5   |     8|
+|8     |LUT6   |    19|
 |9     |FDPE   |     4|
-|10    |FDRE   |    52|
+|10    |FDRE   |    48|
 |11    |LD     |    20|
-|12    |IBUF   |     6|
+|12    |IBUF   |    17|
 |13    |OBUF   |     6|
 |14    |OBUFT  |     1|
 +------+-------+------+
@@ -504,36 +508,36 @@ Report Instance Areas:
 +------+------------------+-------------+------+
 |      |Instance          |Module       |Cells |
 +------+------------------+-------------+------+
-|1     |top               |             |   180|
-|2     |  PWM_ControllerA |PWM_Module   |    49|
-|3     |  PWM_ControllerB |PWM_Module_0 |    49|
-|4     |  SPI_SL          |slave        |    46|
+|1     |top               |             |   212|
+|2     |  PWM_ControllerA |PWM_Module   |    62|
+|3     |  PWM_ControllerB |PWM_Module_0 |    62|
+|4     |  SPI_SL          |slave        |    39|
 +------+------------------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 426 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:51 . Memory (MB): peak = 1018.676 ; gain = 316.293
-Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1018.676 ; gain = 417.148
+Synthesis finished with 0 errors, 0 critical warnings and 506 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:42 . Memory (MB): peak = 1012.305 ; gain = 313.008
+Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1012.305 ; gain = 411.500
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1018.676 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 26 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1012.305 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 28 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 10 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1025.801 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1022.027 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 20 instances were transformed.
   LD => LDCE: 10 instances
   LD => LDCE (inverted pins: G): 10 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-31 Infos, 165 Warnings, 7 Critical Warnings and 0 Errors encountered.
+32 Infos, 167 Warnings, 8 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:03 . Memory (MB): peak = 1025.801 ; gain = 720.438
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1025.801 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:53 ; elapsed = 00:00:57 . Memory (MB): peak = 1022.027 ; gain = 716.250
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1022.027 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.runs/synth_1/STANDARD_TOPLEVEL.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file STANDARD_TOPLEVEL_utilization_synth.rpt -pb STANDARD_TOPLEVEL_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu May  7 10:17:13 2020...
+INFO: [Common 17-206] Exiting Vivado at Mon May 25 15:09:58 2020...

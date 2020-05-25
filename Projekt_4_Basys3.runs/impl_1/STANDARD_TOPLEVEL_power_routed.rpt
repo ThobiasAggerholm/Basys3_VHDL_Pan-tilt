@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Thu May  7 10:18:55 2020
+| Date             : Mon May 25 15:11:29 2020
 | Host             : DESKTOP-HA0SSCD running 64-bit major release  (build 9200)
 | Command          : report_power -file STANDARD_TOPLEVEL_power_routed.rpt -pb STANDARD_TOPLEVEL_power_summary_routed.pb -rpx STANDARD_TOPLEVEL_power_routed.rpx
 | Design           : STANDARD_TOPLEVEL
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.070        |
+| Total On-Chip Power (W)  | 0.075        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.001        |
-| Device Static (W)        | 0.068        |
+| Dynamic (W)              | 0.003        |
+| Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.7         |
-| Junction Temperature (C) | 25.3         |
+| Max Ambient (C)          | 84.6         |
+| Junction Temperature (C) | 25.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      173 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       56 |     20800 |            0.27 |
-|   CARRY4       |    <0.001 |        6 |      8150 |            0.07 |
-|   Register     |    <0.001 |       76 |     41600 |            0.18 |
-|   BUFG         |    <0.001 |        2 |        32 |            6.25 |
+| Slice Logic    |    <0.001 |      194 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       73 |     20800 |            0.35 |
+|   CARRY4       |    <0.001 |        8 |      8150 |            0.10 |
+|   Register     |    <0.001 |       72 |     41600 |            0.17 |
+|   BUFG         |    <0.001 |        3 |        32 |            9.38 |
 |   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |    <0.001 |      119 |       --- |             --- |
-| I/O            |    <0.001 |       13 |       106 |           12.26 |
-| Static Power   |     0.068 |          |           |                 |
-| Total          |     0.070 |          |           |                 |
+| Signals        |    <0.001 |      138 |       --- |             --- |
+| I/O            |     0.001 |       24 |       106 |           22.64 |
+| Static Power   |     0.072 |          |           |                 |
+| Total          |     0.075 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.011 |       0.001 |      0.010 |
+| Vccint    |       1.000 |     0.011 |       0.002 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -141,7 +141,7 @@ Table of Contents
 +-------------------+-----------+
 | Name              | Power (W) |
 +-------------------+-----------+
-| STANDARD_TOPLEVEL |     0.001 |
+| STANDARD_TOPLEVEL |     0.003 |
 +-------------------+-----------+
 
 
