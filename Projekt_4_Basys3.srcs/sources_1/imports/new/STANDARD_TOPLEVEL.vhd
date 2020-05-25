@@ -142,12 +142,12 @@ architecture Behavioral of STANDARD_TOPLEVEL is
         );
     end component;
     
-    signal dirA : STD_LOGIC;
+    signal dirA : STD_LOGIC := '0';
     signal enableA : STD_LOGIC := '0';
     signal PWM_pulseA : STD_LOGIC := '0';
     signal PWM_dutyCycleA :  std_logic_vector( PWM_resolution-1 downto 0) := ( others => '0'); -- Length depends on max_val
     
-    signal dirB : STD_LOGIC;
+    signal dirB : STD_LOGIC := '0';
     signal enableB : STD_LOGIC := '0';
     signal PWM_pulseB : STD_LOGIC := '0';
     signal PWM_dutyCycleB :  std_logic_vector( PWM_resolution-1 downto 0) := ( others => '0'); -- Length depends on max_val
@@ -240,28 +240,31 @@ begin
  PWM_PULSE2 <= PWM_pulseB;
   
   --Transmit
-  Data_Tra_Queue(Hall_Counter_size + 2 downto Hall_Counter_size) <= Hall1 & Hall0 & Data_Rec_Queue(10);
+  Data_Tra_Queue(1 downto 0) <=  Hall0 & Hall1;
+  Data_Tra_Queue(3) <=  Data_Rec_Queue(2);
   
   transmit : process(clk)
   begin
   --When data is ready to read, transmission is done.
-  if Data_Rec_Queue(10) = '1' then
-  Data_Tra_Queue(Hall_Counter_size -1 downto 0) <= motor2_out;
+  if Data_Rec_Queue(2) = '1' then
+  Data_Tra_Queue(2) <= dirB;
+  Data_Tra_Queue(Hall_Counter_size + 3 downto 4) <= motor2_out;
   else
-  Data_Tra_Queue(Hall_Counter_size -1 downto 0) <= motor1_out;
+  Data_Tra_Queue(2) <= dirA;
+  Data_Tra_Queue(Hall_Counter_size + 3 downto 4) <= motor1_out;
   end if;
   end process;
   
   recieve : process(clk)
   begin
-    if Data_Rec_Queue(10) = '1' then --MotorSelect - Enable - direction - PWM 8 bit
-        enableA <= Data_Rec_Queue(9);
-        dirA <= Data_Rec_Queue(8);
-        PWM_dutyCycleA <= Data_Rec_Queue(PWM_resolution -1 downto 0);          
+    if Data_Rec_Queue(2) = '0' then --MotorSelect - Enable - direction - PWM 8 bit
+        enableA <= Data_Rec_Queue(0);
+        dirA <= Data_Rec_Queue(1);
+        PWM_dutyCycleA <= Data_Rec_Queue(PWM_resolution +2 downto 3);          
     else
-        enableB <= Data_Rec_Queue(9);
-        dirB <= Data_Rec_Queue(8);
-        PWM_dutyCycleB <= Data_Rec_Queue(PWM_resolution -1 downto 0);    
+        enableB <= Data_Rec_Queue(0);
+        dirB <= Data_Rec_Queue(1);
+        PWM_dutyCycleB <= Data_Rec_Queue(PWM_resolution +2 downto 3);    
         
     end if;
   end process;

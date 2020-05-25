@@ -186,7 +186,7 @@ begin
         vauxp14 <= '1'; --
 
         
-        MasterOutData <= X"077F";
+        MasterOutData <= X"03FB";
         
         wait until rising_edge(clk);
         wait until rising_edge(clk);
@@ -210,7 +210,7 @@ begin
         vauxp14 <= '1'; --ss
         
         --New input
-        MasterOutData <= X"027F";
+        MasterOutData <= X"03FD";
         
         wait until rising_edge(clk);
         wait until rising_edge(clk);
@@ -233,7 +233,7 @@ begin
         vauxp14 <= '1'; --ss
         
                 --New input
-        MasterOutData <= X"027F";
+        MasterOutData <= X"03FD";
         
         wait until rising_edge(clk);
         wait until rising_edge(clk);
