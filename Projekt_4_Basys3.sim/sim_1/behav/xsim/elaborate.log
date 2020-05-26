@@ -3,19 +3,12 @@ Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 39a7487a5a984f1c86fb433075c11d3d --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_STANDARD_TOPLEVEL_behav xil_defaultlib.tb_STANDARD_TOPLEVEL -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.std_logic_arith
-Compiling package ieee.std_logic_unsigned
-Compiling architecture behavioral of entity xil_defaultlib.slave [slave_default]
-Compiling architecture behavioral of entity xil_defaultlib.PWM_Module [\PWM_Module(0,3)(0,3)(0,7)\]
-Compiling architecture behavioral of entity xil_defaultlib.Hall_Modul [hall_modul_default]
-Compiling architecture behavioral of entity xil_defaultlib.H_bridge [h_bridge_default]
-Compiling architecture behavioral of entity xil_defaultlib.STANDARD_TOPLEVEL [standard_toplevel_default]
-Compiling architecture tb of entity xil_defaultlib.tb_standard_toplevel
-Built simulation snapshot tb_STANDARD_TOPLEVEL_behav
+ERROR: [VRFC 10-718] formal port <POS1> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:36]
+ERROR: [VRFC 10-718] formal port <POS2> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:37]
+ERROR: [VRFC 10-718] formal port <RECEIVE_BUFFER> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:38]
+ERROR: [VRFC 10-718] formal port <TRANSMIT_BUFFER> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:39]
+ERROR: [VRFC 10-718] formal port <PWM_DUTYCYCLE1> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:40]
+ERROR: [VRFC 10-718] formal port <PWM_DUTYCYCLE2> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:41]
+ERROR: [VRFC 10-718] formal port <PWM_PULSE1> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:42]
+ERROR: [VRFC 10-718] formal port <PWM_PULSE2> does not exist in entity <STANDARD_TOPLEVEL>.  Please compare the definition of block <STANDARD_TOPLEVEL> to its component declaration and its instantion to detect the mismatch. [C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/imports/new/tb_STANDARD_TOPLEVEL.vhd:43]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit tb_standard_toplevel in library work failed.

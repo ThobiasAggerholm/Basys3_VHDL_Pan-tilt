@@ -1,0 +1,12 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/imports/new/STANDARD_TOPLEVEL.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'STANDARD_TOPLEVEL'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/slave.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'slave'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/PWM_Module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'PWM_Module'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/Hall_Modul.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Hall_Modul'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sources_1/new/H_bridge.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'H_bridge'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Thobi/CloudStation/Thobias/UNI/4.Semester/Digital_Porgrammerbar_Elektronik/vivado/Projekt_4_Basys3/Projekt_4_Basys3.srcs/sim_1/new/tb_PWM_Module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_PWM_Module'
