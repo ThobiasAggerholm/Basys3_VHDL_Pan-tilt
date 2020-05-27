@@ -20,6 +20,7 @@ create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk
 
 #Switch Clock
  set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets sw_IBUF[2]]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets led_OBUF[3]] 
 
 #Switches
 set_property -dict { PACKAGE_PIN V17    IOSTANDARD LVCMOS33 } [get_ports {sw[0]}]
@@ -41,22 +42,22 @@ set_property -dict { PACKAGE_PIN R2     IOSTANDARD LVCMOS33 } [get_ports {sw[15]
 
 
 # LEDs
-#set_property -dict { PACKAGE_PIN U16    IOSTANDARD LVCMOS33 } [get_ports { led[0] }]
-#set_property -dict { PACKAGE_PIN E19    IOSTANDARD LVCMOS33 } [get_ports { led[1] }]
-#set_property -dict { PACKAGE_PIN U19    IOSTANDARD LVCMOS33 } [get_ports { led[2] }]
-#set_property -dict { PACKAGE_PIN V19    IOSTANDARD LVCMOS33 } [get_ports { led[3] }]
-#set_property -dict { PACKAGE_PIN W18    IOSTANDARD LVCMOS33 } [get_ports { led[4] }]
-#set_property -dict { PACKAGE_PIN U15    IOSTANDARD LVCMOS33 } [get_ports { led[5] }]
-#set_property -dict { PACKAGE_PIN U14    IOSTANDARD LVCMOS33 } [get_ports { led[6] }]
-#set_property -dict { PACKAGE_PIN V14    IOSTANDARD LVCMOS33 } [get_ports { led[7] }]
-#set_property -dict { PACKAGE_PIN V13    IOSTANDARD LVCMOS33 } [get_ports { led[8] }]
-#set_property -dict { PACKAGE_PIN V3     IOSTANDARD LVCMOS33 } [get_ports { led[9] }]
-#set_property -dict { PACKAGE_PIN W3     IOSTANDARD LVCMOS33 } [get_ports { led[10] }]
-#set_property -dict { PACKAGE_PIN U3     IOSTANDARD LVCMOS33 } [get_ports { led[11] }]
-#set_property -dict { PACKAGE_PIN P3     IOSTANDARD LVCMOS33 } [get_ports { led[12] }]
-#set_property -dict { PACKAGE_PIN N3     IOSTANDARD LVCMOS33 } [get_ports { led[13] }]
-#set_property -dict { PACKAGE_PIN P1     IOSTANDARD LVCMOS33 } [get_ports { led[14] }]
-#set_property -dict { PACKAGE_PIN L1     IOSTANDARD LVCMOS33 } [get_ports { led[15] }]
+set_property -dict { PACKAGE_PIN U16    IOSTANDARD LVCMOS33 } [get_ports { led[0] }]
+set_property -dict { PACKAGE_PIN E19    IOSTANDARD LVCMOS33 } [get_ports { led[1] }]
+set_property -dict { PACKAGE_PIN U19    IOSTANDARD LVCMOS33 } [get_ports { led[2] }]
+set_property -dict { PACKAGE_PIN V19    IOSTANDARD LVCMOS33 } [get_ports { led[3] }]
+set_property -dict { PACKAGE_PIN W18    IOSTANDARD LVCMOS33 } [get_ports { led[4] }]
+set_property -dict { PACKAGE_PIN U15    IOSTANDARD LVCMOS33 } [get_ports { led[5] }]
+set_property -dict { PACKAGE_PIN U14    IOSTANDARD LVCMOS33 } [get_ports { led[6] }]
+set_property -dict { PACKAGE_PIN V14    IOSTANDARD LVCMOS33 } [get_ports { led[7] }]
+set_property -dict { PACKAGE_PIN V13    IOSTANDARD LVCMOS33 } [get_ports { led[8] }]
+set_property -dict { PACKAGE_PIN V3     IOSTANDARD LVCMOS33 } [get_ports { led[9] }]
+set_property -dict { PACKAGE_PIN W3     IOSTANDARD LVCMOS33 } [get_ports { led[10] }]
+set_property -dict { PACKAGE_PIN U3     IOSTANDARD LVCMOS33 } [get_ports { led[11] }]
+set_property -dict { PACKAGE_PIN P3     IOSTANDARD LVCMOS33 } [get_ports { led[12] }]
+set_property -dict { PACKAGE_PIN N3     IOSTANDARD LVCMOS33 } [get_ports { led[13] }]
+set_property -dict { PACKAGE_PIN P1     IOSTANDARD LVCMOS33 } [get_ports { led[14] }]
+set_property -dict { PACKAGE_PIN L1     IOSTANDARD LVCMOS33 } [get_ports { led[15] }]
 
 
 #7 segment display
@@ -102,17 +103,17 @@ set_property -dict { PACKAGE_PIN R2     IOSTANDARD LVCMOS33 } [get_ports {sw[15]
 #set_property -dict { PACKAGE_PIN G3     IOSTANDARD LVCMOS33 } [get_ports {JA[7]}]   #Sch name = JA10
 
 ##Pmod Header JB
-set_property PACKAGE_PIN A14 [get_ports {IN1A}]
+set_property PACKAGE_PIN A14 [get_ports {IN1A}] #JB1
     set_property IOSTANDARD LVCMOS33 [get_ports {IN1A}]    
-set_property PACKAGE_PIN A16 [get_ports {ENA}]
+set_property PACKAGE_PIN A16 [get_ports {ENA}] #JB2
     set_property IOSTANDARD LVCMOS33 [get_ports {ENA}]    
-set_property PACKAGE_PIN B15 [get_ports {IN2B}]
+set_property PACKAGE_PIN B15 [get_ports {IN2B}] #JB3
     set_property IOSTANDARD LVCMOS33 [get_ports {IN2B}]
-set_property PACKAGE_PIN B16 [get_ports {IN2A}]
+set_property PACKAGE_PIN B16 [get_ports {IN2A}]#JB4
     set_property IOSTANDARD LVCMOS33 [get_ports {IN2A}]
-set_property PACKAGE_PIN A15 [get_ports {IN1B}]
+set_property PACKAGE_PIN A15 [get_ports {IN1B}] #JB7
     set_property IOSTANDARD LVCMOS33 [get_ports {IN1B}]
-set_property PACKAGE_PIN A17 [get_ports {ENB}]
+set_property PACKAGE_PIN A17 [get_ports {ENB}] #JB8
     set_property IOSTANDARD LVCMOS33 [get_ports {ENB}]
 #set_property -dict { PACKAGE_PIN A14    IOSTANDARD LVCMOS33 } [get_ports {JB[0]}]   #Sch name = JB1
 #set_property -dict { PACKAGE_PIN A16    IOSTANDARD LVCMOS33 } [get_ports {JB[1]}]	#Sch name = JB2

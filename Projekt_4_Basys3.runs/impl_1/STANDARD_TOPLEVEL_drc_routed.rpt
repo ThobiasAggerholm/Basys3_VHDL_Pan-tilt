@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Mon May 25 16:54:27 2020
+| Date         : Tue May 26 13:11:59 2020
 | Host         : DESKTOP-HA0SSCD running 64-bit major release  (build 9200)
 | Command      : report_drc -file STANDARD_TOPLEVEL_drc_routed.rpt -pb STANDARD_TOPLEVEL_drc_routed.pb -rpx STANDARD_TOPLEVEL_drc_routed.rpx
 | Design       : STANDARD_TOPLEVEL
@@ -54,7 +54,7 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	sw_IBUF[2]_inst (IBUF.O) is locked to W16
-	sw_IBUF_BUFG[2]_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y2
+	led_OBUF_BUFG[3]_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
 
 Related violations: <none>
 
@@ -65,7 +65,7 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
  This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
 	vauxp14_IBUF_inst (IBUF.O) is locked to L3
-	vauxp15_TRI_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
+	vauxp15_TRI_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y1
 
 Related violations: <none>
 

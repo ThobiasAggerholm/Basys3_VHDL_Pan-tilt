@@ -68,7 +68,8 @@ entity STANDARD_TOPLEVEL is
            
            
            --PWM test
-           sw : in std_logic_vector(SPI_data_length -1 downto 0)    
+           sw : in std_logic_vector(SPI_data_length -1 downto 0);
+           led : out std_logic_vector(SPI_data_length -1 downto 0) := (others => '0') 
            );
 end STANDARD_TOPLEVEL;
 
@@ -189,7 +190,7 @@ begin
     );
     
 
-  
+  led <= Data_Tra_Queue;
   --Transmit
   Data_Tra_Queue(1 downto 0) <= Hall0 & Hall1;
   Data_Tra_Queue(3) <= sw(2);

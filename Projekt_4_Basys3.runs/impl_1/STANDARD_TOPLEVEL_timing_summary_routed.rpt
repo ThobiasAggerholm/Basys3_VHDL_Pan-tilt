@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Mon May 25 16:54:28 2020
+| Date         : Tue May 26 13:12:00 2020
 | Host         : DESKTOP-HA0SSCD running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file STANDARD_TOPLEVEL_timing_summary_routed.rpt -pb STANDARD_TOPLEVEL_timing_summary_routed.pb -rpx STANDARD_TOPLEVEL_timing_summary_routed.rpx -warn_on_violation
 | Design       : STANDARD_TOPLEVEL
@@ -87,7 +87,7 @@ Table of Contents
 
 6. checking no_output_delay
 ---------------------------
- There are 7 ports with no output delay specified. (HIGH)
+ There are 8 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -132,7 +132,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      5.383        0.000                      0                   52        0.247        0.000                      0                   52        4.500        0.000                       0                    29  
+      5.863        0.000                      0                   52        0.291        0.000                      0                   52        4.500        0.000                       0                    29  
 
 
 All user specified timing constraints are met.
@@ -155,7 +155,7 @@ sys_clk_pin  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk_pin         5.383        0.000                      0                   52        0.247        0.000                      0                   52        4.500        0.000                       0                    29  
+sys_clk_pin         5.863        0.000                      0                   52        0.291        0.000                      0                   52        4.500        0.000                       0                    29  
 
 
 ------------------------------------------------------------------------------------------------
@@ -186,15 +186,142 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  sys_clk_pin
   To Clock:  sys_clk_pin
 
-Setup :            0  Failing Endpoints,  Worst Slack        5.383ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.247ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        5.863ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.291ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             5.383ns  (required time - arrival time)
+Slack (MET) :             5.863ns  (required time - arrival time)
+  Source:                 PWM_ControllerA/cnt_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerA/pulse_reg/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.106ns  (logic 1.341ns (32.660%)  route 2.765ns (67.340%))
+  Logic Levels:           4  (CARRY4=1 LUT4=1 LUT6=2)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.157ns
+    Clock Pessimism Removal (CPR):    0.273ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.636     5.157    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y47          FDRE (Prop_fdre_C_Q)         0.456     5.613 r  PWM_ControllerA/cnt_reg[1]/Q
+                         net (fo=9, routed)           1.285     6.898    PWM_ControllerA/cnt_reg_n_0_[1]
+    SLICE_X6Y48          LUT4 (Prop_lut4_I0_O)        0.124     7.022 r  PWM_ControllerA/pulse_i_25/O
+                         net (fo=1, routed)           0.000     7.022    PWM_ControllerA/pulse_i_25_n_0
+    SLICE_X6Y48          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513     7.535 r  PWM_ControllerA/pulse_reg_i_8/CO[3]
+                         net (fo=4, routed)           1.036     8.571    PWM_ControllerA/gtOp
+    SLICE_X4Y49          LUT6 (Prop_lut6_I4_O)        0.124     8.695 r  PWM_ControllerA/pulse_i_2/O
+                         net (fo=1, routed)           0.444     9.139    PWM_ControllerA/pulse_i_2_n_0
+    SLICE_X4Y49          LUT6 (Prop_lut6_I0_O)        0.124     9.263 r  PWM_ControllerA/pulse_i_1/O
+                         net (fo=1, routed)           0.000     9.263    PWM_ControllerA/pulse_i_1_n_0
+    SLICE_X4Y49          FDRE                                         r  PWM_ControllerA/pulse_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.518    14.859    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X4Y49          FDRE                                         r  PWM_ControllerA/pulse_reg/C
+                         clock pessimism              0.273    15.132    
+                         clock uncertainty           -0.035    15.097    
+    SLICE_X4Y49          FDRE (Setup_fdre_C_D)        0.029    15.126    PWM_ControllerA/pulse_reg
+  -------------------------------------------------------------------
+                         required time                         15.126    
+                         arrival time                          -9.263    
+  -------------------------------------------------------------------
+                         slack                                  5.863    
+
+Slack (MET) :             5.962ns  (required time - arrival time)
+  Source:                 PWM_ControllerB/clk_div_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerB/cnt_dir_reg/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        3.925ns  (logic 1.188ns (30.264%)  route 2.737ns (69.736%))
+  Logic Levels:           4  (LUT4=1 LUT6=3)
+  Clock Path Skew:        -0.107ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.148ns
+    Clock Pessimism Removal (CPR):    0.180ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.627     5.148    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y51          FDRE (Prop_fdre_C_Q)         0.456     5.604 f  PWM_ControllerB/clk_div_reg[1]/Q
+                         net (fo=5, routed)           1.264     6.868    PWM_ControllerB/clk_div_reg[1]
+    SLICE_X0Y51          LUT4 (Prop_lut4_I1_O)        0.152     7.020 f  PWM_ControllerB/cnt_dir_i_4__0/O
+                         net (fo=2, routed)           0.801     7.821    PWM_ControllerB/cnt_dir_i_4__0_n_0
+    SLICE_X0Y49          LUT6 (Prop_lut6_I0_O)        0.332     8.153 r  PWM_ControllerB/cnt_dir_i_2__0/O
+                         net (fo=2, routed)           0.169     8.322    PWM_ControllerB/cnt_dir_i_2__0_n_0
+    SLICE_X0Y49          LUT6 (Prop_lut6_I3_O)        0.124     8.446 r  PWM_ControllerB/cnt_dir_i_3__0/O
+                         net (fo=1, routed)           0.504     8.949    PWM_ControllerB/cnt_dir_i_3__0_n_0
+    SLICE_X1Y49          LUT6 (Prop_lut6_I5_O)        0.124     9.073 r  PWM_ControllerB/cnt_dir_i_1__0/O
+                         net (fo=1, routed)           0.000     9.073    PWM_ControllerB/cnt_dir_i_1__0_n_0
+    SLICE_X1Y49          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.520    14.861    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X1Y49          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/C
+                         clock pessimism              0.180    15.041    
+                         clock uncertainty           -0.035    15.006    
+    SLICE_X1Y49          FDRE (Setup_fdre_C_D)        0.029    15.035    PWM_ControllerB/cnt_dir_reg
+  -------------------------------------------------------------------
+                         required time                         15.035    
+                         arrival time                          -9.073    
+  -------------------------------------------------------------------
+                         slack                                  5.962    
+
+Slack (MET) :             6.136ns  (required time - arrival time)
   Source:                 PWM_ControllerB/cnt_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            PWM_ControllerB/pulse_reg/D
@@ -202,11 +329,11 @@ Slack (MET) :             5.383ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        4.633ns  (logic 1.361ns (29.373%)  route 3.272ns (70.627%))
+  Data Path Delay:        3.882ns  (logic 1.378ns (35.499%)  route 2.504ns (64.501%))
   Logic Levels:           4  (CARRY4=1 LUT4=1 LUT6=2)
-  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.160ns
+    Source Clock Delay      (SCD):    5.159ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -222,22 +349,22 @@ Slack (MET) :             5.383ns  (required time - arrival time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.639     5.160    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[3]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.638     5.159    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y47          FDRE (Prop_fdre_C_Q)         0.456     5.616 r  PWM_ControllerB/cnt_reg[3]/Q
-                         net (fo=9, routed)           1.636     7.252    PWM_ControllerB/cnt_reg_n_0_[3]
-    SLICE_X2Y46          LUT4 (Prop_lut4_I0_O)        0.124     7.376 r  PWM_ControllerB/pulse_i_24__0/O
-                         net (fo=1, routed)           0.000     7.376    PWM_ControllerB/pulse_i_24__0_n_0
-    SLICE_X2Y46          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     7.909 r  PWM_ControllerB/pulse_reg_i_8__0/CO[3]
-                         net (fo=4, routed)           0.976     8.885    PWM_ControllerB/gtOp
-    SLICE_X3Y47          LUT6 (Prop_lut6_I4_O)        0.124     9.009 r  PWM_ControllerB/pulse_i_4__0/O
-                         net (fo=1, routed)           0.661     9.670    PWM_ControllerB/pulse_i_4__0_n_0
-    SLICE_X2Y47          LUT6 (Prop_lut6_I2_O)        0.124     9.794 r  PWM_ControllerB/pulse_i_1__0/O
-                         net (fo=1, routed)           0.000     9.794    PWM_ControllerB/pulse_i_1__0_n_0
-    SLICE_X2Y47          FDRE                                         r  PWM_ControllerB/pulse_reg/D
+    SLICE_X1Y46          FDRE (Prop_fdre_C_Q)         0.456     5.615 r  PWM_ControllerB/cnt_reg[3]/Q
+                         net (fo=9, routed)           1.039     6.655    PWM_ControllerB/cnt_reg_n_0_[3]
+    SLICE_X1Y48          LUT4 (Prop_lut4_I0_O)        0.124     6.779 r  PWM_ControllerB/pulse_i_24__0/O
+                         net (fo=1, routed)           0.000     6.779    PWM_ControllerB/pulse_i_24__0_n_0
+    SLICE_X1Y48          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.329 r  PWM_ControllerB/pulse_reg_i_8__0/CO[3]
+                         net (fo=4, routed)           0.801     8.130    PWM_ControllerB/gtOp
+    SLICE_X2Y48          LUT6 (Prop_lut6_I4_O)        0.124     8.254 r  PWM_ControllerB/pulse_i_2__0/O
+                         net (fo=1, routed)           0.663     8.917    PWM_ControllerB/pulse_i_2__0_n_0
+    SLICE_X2Y49          LUT6 (Prop_lut6_I0_O)        0.124     9.041 r  PWM_ControllerB/pulse_i_1__0/O
+                         net (fo=1, routed)           0.000     9.041    PWM_ControllerB/pulse_i_1__0_n_0
+    SLICE_X2Y49          FDRE                                         r  PWM_ControllerB/pulse_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -246,95 +373,31 @@ Slack (MET) :             5.383ns  (required time - arrival time)
                          net (fo=0)                   0.000    10.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
                          net (fo=28, routed)          1.520    14.861    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X2Y47          FDRE                                         r  PWM_ControllerB/pulse_reg/C
+    SLICE_X2Y49          FDRE                                         r  PWM_ControllerB/pulse_reg/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X2Y47          FDRE (Setup_fdre_C_D)        0.077    15.177    PWM_ControllerB/pulse_reg
+    SLICE_X2Y49          FDRE (Setup_fdre_C_D)        0.077    15.177    PWM_ControllerB/pulse_reg
   -------------------------------------------------------------------
                          required time                         15.177    
-                         arrival time                          -9.794    
+                         arrival time                          -9.041    
   -------------------------------------------------------------------
-                         slack                                  5.383    
+                         slack                                  6.136    
 
-Slack (MET) :             5.638ns  (required time - arrival time)
-  Source:                 PWM_ControllerA/cnt_reg[1]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerA/pulse_reg/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        4.332ns  (logic 1.422ns (32.823%)  route 2.910ns (67.177%))
-  Logic Levels:           4  (CARRY4=1 LUT4=1 LUT6=2)
-  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.156ns
-    Clock Pessimism Removal (CPR):    0.273ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.635     5.156    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X6Y45          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X6Y45          FDRE (Prop_fdre_C_Q)         0.518     5.674 r  PWM_ControllerA/cnt_reg[1]/Q
-                         net (fo=9, routed)           0.974     6.648    PWM_ControllerA/cnt_reg_n_0_[1]
-    SLICE_X4Y47          LUT4 (Prop_lut4_I0_O)        0.124     6.772 r  PWM_ControllerA/pulse_i_17/O
-                         net (fo=1, routed)           0.000     6.772    PWM_ControllerA/pulse_i_17_n_0
-    SLICE_X4Y47          CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.532     7.304 r  PWM_ControllerA/pulse_reg_i_6/CO[3]
-                         net (fo=4, routed)           1.294     8.598    PWM_ControllerA/geqOp
-    SLICE_X5Y45          LUT6 (Prop_lut6_I1_O)        0.124     8.722 r  PWM_ControllerA/pulse_i_2/O
-                         net (fo=1, routed)           0.642     9.365    PWM_ControllerA/pulse_i_2_n_0
-    SLICE_X4Y45          LUT6 (Prop_lut6_I0_O)        0.124     9.489 r  PWM_ControllerA/pulse_i_1/O
-                         net (fo=1, routed)           0.000     9.489    PWM_ControllerA/pulse_i_1_n_0
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/pulse_reg/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.517    14.858    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/pulse_reg/C
-                         clock pessimism              0.273    15.131    
-                         clock uncertainty           -0.035    15.096    
-    SLICE_X4Y45          FDRE (Setup_fdre_C_D)        0.031    15.127    PWM_ControllerA/pulse_reg
-  -------------------------------------------------------------------
-                         required time                         15.127    
-                         arrival time                          -9.489    
-  -------------------------------------------------------------------
-                         slack                                  5.638    
-
-Slack (MET) :             6.536ns  (required time - arrival time)
-  Source:                 PWM_ControllerA/cnt_reg[3]/C
+Slack (MET) :             6.366ns  (required time - arrival time)
+  Source:                 PWM_ControllerA/clk_div_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            PWM_ControllerA/cnt_dir_reg/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.435ns  (logic 1.014ns (29.520%)  route 2.421ns (70.480%))
+  Data Path Delay:        3.605ns  (logic 1.014ns (28.127%)  route 2.591ns (71.873%))
   Logic Levels:           4  (LUT4=1 LUT6=3)
   Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.156ns
+    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.157ns
     Clock Pessimism Removal (CPR):    0.273ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -350,82 +413,21 @@ Slack (MET) :             6.536ns  (required time - arrival time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.635     5.156    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X6Y45          FDRE                                         r  PWM_ControllerA/cnt_reg[3]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.636     5.157    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y45          FDRE (Prop_fdre_C_Q)         0.518     5.674 f  PWM_ControllerA/cnt_reg[3]/Q
-                         net (fo=9, routed)           0.862     6.536    PWM_ControllerA/cnt_reg_n_0_[3]
-    SLICE_X4Y45          LUT4 (Prop_lut4_I2_O)        0.124     6.660 r  PWM_ControllerA/cnt_dir_i_6/O
-                         net (fo=1, routed)           0.670     7.330    PWM_ControllerA/cnt_dir_i_6_n_0
-    SLICE_X4Y45          LUT6 (Prop_lut6_I4_O)        0.124     7.454 r  PWM_ControllerA/cnt_dir_i_2/O
-                         net (fo=2, routed)           0.589     8.043    PWM_ControllerA/cnt_dir_i_2_n_0
-    SLICE_X4Y46          LUT6 (Prop_lut6_I3_O)        0.124     8.167 r  PWM_ControllerA/cnt_dir_i_3/O
-                         net (fo=1, routed)           0.300     8.467    PWM_ControllerA/cnt_dir_i_3_n_0
-    SLICE_X4Y45          LUT6 (Prop_lut6_I5_O)        0.124     8.591 r  PWM_ControllerA/cnt_dir_i_1/O
-                         net (fo=1, routed)           0.000     8.591    PWM_ControllerA/cnt_dir_i_1_n_0
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.517    14.858    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/C
-                         clock pessimism              0.273    15.131    
-                         clock uncertainty           -0.035    15.096    
-    SLICE_X4Y45          FDRE (Setup_fdre_C_D)        0.031    15.127    PWM_ControllerA/cnt_dir_reg
-  -------------------------------------------------------------------
-                         required time                         15.127    
-                         arrival time                          -8.591    
-  -------------------------------------------------------------------
-                         slack                                  6.536    
-
-Slack (MET) :             6.822ns  (required time - arrival time)
-  Source:                 PWM_ControllerB/cnt_reg[3]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/cnt_dir_reg/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.150ns  (logic 1.058ns (33.592%)  route 2.092ns (66.408%))
-  Logic Levels:           3  (LUT4=1 LUT6=2)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.160ns
-    Clock Pessimism Removal (CPR):    0.277ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.639     5.160    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[3]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y47          FDRE (Prop_fdre_C_Q)         0.456     5.616 f  PWM_ControllerB/cnt_reg[3]/Q
-                         net (fo=9, routed)           1.333     6.950    PWM_ControllerB/cnt_reg_n_0_[3]
-    SLICE_X1Y46          LUT4 (Prop_lut4_I2_O)        0.152     7.102 r  PWM_ControllerB/cnt_dir_i_6__0/O
-                         net (fo=1, routed)           0.303     7.405    PWM_ControllerB/cnt_dir_i_6__0_n_0
-    SLICE_X0Y47          LUT6 (Prop_lut6_I4_O)        0.326     7.731 r  PWM_ControllerB/cnt_dir_i_2__0/O
-                         net (fo=2, routed)           0.455     8.186    PWM_ControllerB/cnt_dir_i_2__0_n_0
-    SLICE_X0Y47          LUT6 (Prop_lut6_I2_O)        0.124     8.310 r  PWM_ControllerB/cnt_dir_i_1__0/O
-                         net (fo=1, routed)           0.000     8.310    PWM_ControllerB/cnt_dir_i_1__0_n_0
-    SLICE_X0Y47          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/D
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.518     5.675 f  PWM_ControllerA/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.893     6.568    PWM_ControllerA/clk_div_reg[0]
+    SLICE_X6Y49          LUT4 (Prop_lut4_I0_O)        0.124     6.692 f  PWM_ControllerA/cnt_dir_i_4/O
+                         net (fo=2, routed)           0.586     7.279    PWM_ControllerA/cnt_dir_i_4_n_0
+    SLICE_X5Y48          LUT6 (Prop_lut6_I0_O)        0.124     7.403 r  PWM_ControllerA/cnt_dir_i_2/O
+                         net (fo=2, routed)           0.445     7.847    PWM_ControllerA/cnt_dir_i_2_n_0
+    SLICE_X5Y48          LUT6 (Prop_lut6_I3_O)        0.124     7.971 r  PWM_ControllerA/cnt_dir_i_3/O
+                         net (fo=1, routed)           0.667     8.638    PWM_ControllerA/cnt_dir_i_3_n_0
+    SLICE_X5Y48          LUT6 (Prop_lut6_I5_O)        0.124     8.762 r  PWM_ControllerA/cnt_dir_i_1/O
+                         net (fo=1, routed)           0.000     8.762    PWM_ControllerA/cnt_dir_i_1_n_0
+    SLICE_X5Y48          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -434,247 +436,19 @@ Slack (MET) :             6.822ns  (required time - arrival time)
                          net (fo=0)                   0.000    10.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.520    14.861    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y47          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/C
-                         clock pessimism              0.277    15.138    
-                         clock uncertainty           -0.035    15.103    
-    SLICE_X0Y47          FDRE (Setup_fdre_C_D)        0.029    15.132    PWM_ControllerB/cnt_dir_reg
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.518    14.859    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X5Y48          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/C
+                         clock pessimism              0.273    15.132    
+                         clock uncertainty           -0.035    15.097    
+    SLICE_X5Y48          FDRE (Setup_fdre_C_D)        0.031    15.128    PWM_ControllerA/cnt_dir_reg
   -------------------------------------------------------------------
-                         required time                         15.132    
-                         arrival time                          -8.310    
+                         required time                         15.128    
+                         arrival time                          -8.762    
   -------------------------------------------------------------------
-                         slack                                  6.822    
+                         slack                                  6.366    
 
-Slack (MET) :             7.043ns  (required time - arrival time)
-  Source:                 PWM_ControllerB/clk_div_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/clk_div_reg[0]/R
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.492ns  (logic 0.718ns (28.810%)  route 1.774ns (71.190%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.299ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.638     5.159    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y46          FDRE (Prop_fdre_C_Q)         0.419     5.578 f  PWM_ControllerB/clk_div_reg[2]/Q
-                         net (fo=4, routed)           0.887     6.465    PWM_ControllerB/clk_div_reg[2]
-    SLICE_X0Y46          LUT4 (Prop_lut4_I0_O)        0.299     6.764 r  PWM_ControllerB/clk_div[3]_i_1__0/O
-                         net (fo=12, routed)          0.888     7.651    PWM_ControllerB/eqOp2_in
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[0]/R
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.519    14.860    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[0]/C
-                         clock pessimism              0.299    15.159    
-                         clock uncertainty           -0.035    15.124    
-    SLICE_X0Y46          FDRE (Setup_fdre_C_R)       -0.429    14.695    PWM_ControllerB/clk_div_reg[0]
-  -------------------------------------------------------------------
-                         required time                         14.695    
-                         arrival time                          -7.651    
-  -------------------------------------------------------------------
-                         slack                                  7.043    
-
-Slack (MET) :             7.043ns  (required time - arrival time)
-  Source:                 PWM_ControllerB/clk_div_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/clk_div_reg[1]/R
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.492ns  (logic 0.718ns (28.810%)  route 1.774ns (71.190%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.299ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.638     5.159    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y46          FDRE (Prop_fdre_C_Q)         0.419     5.578 f  PWM_ControllerB/clk_div_reg[2]/Q
-                         net (fo=4, routed)           0.887     6.465    PWM_ControllerB/clk_div_reg[2]
-    SLICE_X0Y46          LUT4 (Prop_lut4_I0_O)        0.299     6.764 r  PWM_ControllerB/clk_div[3]_i_1__0/O
-                         net (fo=12, routed)          0.888     7.651    PWM_ControllerB/eqOp2_in
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[1]/R
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.519    14.860    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[1]/C
-                         clock pessimism              0.299    15.159    
-                         clock uncertainty           -0.035    15.124    
-    SLICE_X0Y46          FDRE (Setup_fdre_C_R)       -0.429    14.695    PWM_ControllerB/clk_div_reg[1]
-  -------------------------------------------------------------------
-                         required time                         14.695    
-                         arrival time                          -7.651    
-  -------------------------------------------------------------------
-                         slack                                  7.043    
-
-Slack (MET) :             7.043ns  (required time - arrival time)
-  Source:                 PWM_ControllerB/clk_div_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/clk_div_reg[2]/R
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.492ns  (logic 0.718ns (28.810%)  route 1.774ns (71.190%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.299ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.638     5.159    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y46          FDRE (Prop_fdre_C_Q)         0.419     5.578 f  PWM_ControllerB/clk_div_reg[2]/Q
-                         net (fo=4, routed)           0.887     6.465    PWM_ControllerB/clk_div_reg[2]
-    SLICE_X0Y46          LUT4 (Prop_lut4_I0_O)        0.299     6.764 r  PWM_ControllerB/clk_div[3]_i_1__0/O
-                         net (fo=12, routed)          0.888     7.651    PWM_ControllerB/eqOp2_in
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/R
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.519    14.860    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
-                         clock pessimism              0.299    15.159    
-                         clock uncertainty           -0.035    15.124    
-    SLICE_X0Y46          FDRE (Setup_fdre_C_R)       -0.429    14.695    PWM_ControllerB/clk_div_reg[2]
-  -------------------------------------------------------------------
-                         required time                         14.695    
-                         arrival time                          -7.651    
-  -------------------------------------------------------------------
-                         slack                                  7.043    
-
-Slack (MET) :             7.043ns  (required time - arrival time)
-  Source:                 PWM_ControllerB/clk_div_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/clk_div_reg[3]/R
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.492ns  (logic 0.718ns (28.810%)  route 1.774ns (71.190%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.299ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.638     5.159    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y46          FDRE (Prop_fdre_C_Q)         0.419     5.578 f  PWM_ControllerB/clk_div_reg[2]/Q
-                         net (fo=4, routed)           0.887     6.465    PWM_ControllerB/clk_div_reg[2]
-    SLICE_X0Y46          LUT4 (Prop_lut4_I0_O)        0.299     6.764 r  PWM_ControllerB/clk_div[3]_i_1__0/O
-                         net (fo=12, routed)          0.888     7.651    PWM_ControllerB/eqOp2_in
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[3]/R
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.519    14.860    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y46          FDRE                                         r  PWM_ControllerB/clk_div_reg[3]/C
-                         clock pessimism              0.299    15.159    
-                         clock uncertainty           -0.035    15.124    
-    SLICE_X0Y46          FDRE (Setup_fdre_C_R)       -0.429    14.695    PWM_ControllerB/clk_div_reg[3]
-  -------------------------------------------------------------------
-                         required time                         14.695    
-                         arrival time                          -7.651    
-  -------------------------------------------------------------------
-                         slack                                  7.043    
-
-Slack (MET) :             7.309ns  (required time - arrival time)
+Slack (MET) :             7.298ns  (required time - arrival time)
   Source:                 PWM_ControllerA/clk_div_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            PWM_ControllerA/clk_div_reg[0]/R
@@ -682,11 +456,11 @@ Slack (MET) :             7.309ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.226ns  (logic 0.580ns (26.054%)  route 1.646ns (73.946%))
+  Data Path Delay:        2.143ns  (logic 0.642ns (29.963%)  route 1.501ns (70.037%))
   Logic Levels:           1  (LUT4=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.156ns
+    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.157ns
     Clock Pessimism Removal (CPR):    0.298ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -702,15 +476,15 @@ Slack (MET) :             7.309ns  (required time - arrival time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.635     5.156    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.636     5.157    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y44          FDRE (Prop_fdre_C_Q)         0.456     5.612 f  PWM_ControllerA/clk_div_reg[0]/Q
-                         net (fo=6, routed)           0.849     6.462    PWM_ControllerA/clk_div_reg[0]
-    SLICE_X4Y46          LUT4 (Prop_lut4_I3_O)        0.124     6.586 r  PWM_ControllerA/clk_div[3]_i_1/O
-                         net (fo=12, routed)          0.797     7.382    PWM_ControllerA/eqOp2_in
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/R
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.518     5.675 f  PWM_ControllerA/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.912     6.587    PWM_ControllerA/clk_div_reg[0]
+    SLICE_X6Y49          LUT4 (Prop_lut4_I3_O)        0.124     6.711 r  PWM_ControllerA/clk_div[3]_i_1/O
+                         net (fo=12, routed)          0.589     7.300    PWM_ControllerA/eqOp2_in
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -719,19 +493,19 @@ Slack (MET) :             7.309ns  (required time - arrival time)
                          net (fo=0)                   0.000    10.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.517    14.858    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
-                         clock pessimism              0.298    15.156    
-                         clock uncertainty           -0.035    15.121    
-    SLICE_X4Y44          FDRE (Setup_fdre_C_R)       -0.429    14.692    PWM_ControllerA/clk_div_reg[0]
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.518    14.859    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+                         clock pessimism              0.298    15.157    
+                         clock uncertainty           -0.035    15.122    
+    SLICE_X6Y49          FDRE (Setup_fdre_C_R)       -0.524    14.598    PWM_ControllerA/clk_div_reg[0]
   -------------------------------------------------------------------
-                         required time                         14.692    
-                         arrival time                          -7.382    
+                         required time                         14.598    
+                         arrival time                          -7.300    
   -------------------------------------------------------------------
-                         slack                                  7.309    
+                         slack                                  7.298    
 
-Slack (MET) :             7.488ns  (required time - arrival time)
+Slack (MET) :             7.298ns  (required time - arrival time)
   Source:                 PWM_ControllerA/clk_div_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            PWM_ControllerA/clk_div_reg[1]/R
@@ -739,12 +513,12 @@ Slack (MET) :             7.488ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.022ns  (logic 0.580ns (28.682%)  route 1.442ns (71.318%))
+  Data Path Delay:        2.143ns  (logic 0.642ns (29.963%)  route 1.501ns (70.037%))
   Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.156ns
-    Clock Pessimism Removal (CPR):    0.273ns
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.157ns
+    Clock Pessimism Removal (CPR):    0.298ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -759,15 +533,15 @@ Slack (MET) :             7.488ns  (required time - arrival time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.635     5.156    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.636     5.157    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y44          FDRE (Prop_fdre_C_Q)         0.456     5.612 f  PWM_ControllerA/clk_div_reg[0]/Q
-                         net (fo=6, routed)           0.849     6.462    PWM_ControllerA/clk_div_reg[0]
-    SLICE_X4Y46          LUT4 (Prop_lut4_I3_O)        0.124     6.586 r  PWM_ControllerA/clk_div[3]_i_1/O
-                         net (fo=12, routed)          0.593     7.178    PWM_ControllerA/eqOp2_in
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/R
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.518     5.675 f  PWM_ControllerA/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.912     6.587    PWM_ControllerA/clk_div_reg[0]
+    SLICE_X6Y49          LUT4 (Prop_lut4_I3_O)        0.124     6.711 r  PWM_ControllerA/clk_div[3]_i_1/O
+                         net (fo=12, routed)          0.589     7.300    PWM_ControllerA/eqOp2_in
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -776,17 +550,245 @@ Slack (MET) :             7.488ns  (required time - arrival time)
                          net (fo=0)                   0.000    10.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          1.517    14.858    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/C
-                         clock pessimism              0.273    15.131    
-                         clock uncertainty           -0.035    15.096    
-    SLICE_X4Y46          FDRE (Setup_fdre_C_R)       -0.429    14.667    PWM_ControllerA/clk_div_reg[1]
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.518    14.859    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/C
+                         clock pessimism              0.298    15.157    
+                         clock uncertainty           -0.035    15.122    
+    SLICE_X6Y49          FDRE (Setup_fdre_C_R)       -0.524    14.598    PWM_ControllerA/clk_div_reg[1]
   -------------------------------------------------------------------
-                         required time                         14.667    
-                         arrival time                          -7.178    
+                         required time                         14.598    
+                         arrival time                          -7.300    
   -------------------------------------------------------------------
-                         slack                                  7.488    
+                         slack                                  7.298    
+
+Slack (MET) :             7.298ns  (required time - arrival time)
+  Source:                 PWM_ControllerA/clk_div_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerA/clk_div_reg[2]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        2.143ns  (logic 0.642ns (29.963%)  route 1.501ns (70.037%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.157ns
+    Clock Pessimism Removal (CPR):    0.298ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.636     5.157    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.518     5.675 f  PWM_ControllerA/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.912     6.587    PWM_ControllerA/clk_div_reg[0]
+    SLICE_X6Y49          LUT4 (Prop_lut4_I3_O)        0.124     6.711 r  PWM_ControllerA/clk_div[3]_i_1/O
+                         net (fo=12, routed)          0.589     7.300    PWM_ControllerA/eqOp2_in
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.518    14.859    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/C
+                         clock pessimism              0.298    15.157    
+                         clock uncertainty           -0.035    15.122    
+    SLICE_X6Y49          FDRE (Setup_fdre_C_R)       -0.524    14.598    PWM_ControllerA/clk_div_reg[2]
+  -------------------------------------------------------------------
+                         required time                         14.598    
+                         arrival time                          -7.300    
+  -------------------------------------------------------------------
+                         slack                                  7.298    
+
+Slack (MET) :             7.298ns  (required time - arrival time)
+  Source:                 PWM_ControllerA/clk_div_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerA/clk_div_reg[3]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        2.143ns  (logic 0.642ns (29.963%)  route 1.501ns (70.037%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.157ns
+    Clock Pessimism Removal (CPR):    0.298ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.636     5.157    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.518     5.675 f  PWM_ControllerA/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.912     6.587    PWM_ControllerA/clk_div_reg[0]
+    SLICE_X6Y49          LUT4 (Prop_lut4_I3_O)        0.124     6.711 r  PWM_ControllerA/clk_div[3]_i_1/O
+                         net (fo=12, routed)          0.589     7.300    PWM_ControllerA/eqOp2_in
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[3]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.518    14.859    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[3]/C
+                         clock pessimism              0.298    15.157    
+                         clock uncertainty           -0.035    15.122    
+    SLICE_X6Y49          FDRE (Setup_fdre_C_R)       -0.524    14.598    PWM_ControllerA/clk_div_reg[3]
+  -------------------------------------------------------------------
+                         required time                         14.598    
+                         arrival time                          -7.300    
+  -------------------------------------------------------------------
+                         slack                                  7.298    
+
+Slack (MET) :             7.331ns  (required time - arrival time)
+  Source:                 PWM_ControllerB/clk_div_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerB/cnt_reg[1]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        2.321ns  (logic 0.580ns (24.991%)  route 1.741ns (75.009%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        -0.108ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.148ns
+    Clock Pessimism Removal (CPR):    0.180ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.627     5.148    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y51          FDRE (Prop_fdre_C_Q)         0.456     5.604 r  PWM_ControllerB/clk_div_reg[3]/Q
+                         net (fo=3, routed)           0.873     6.477    PWM_ControllerB/clk_div_reg[3]
+    SLICE_X0Y51          LUT4 (Prop_lut4_I1_O)        0.124     6.601 r  PWM_ControllerB/clk_div[3]_i_1__0/O
+                         net (fo=12, routed)          0.868     7.469    PWM_ControllerB/eqOp2_in
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.519    14.860    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[1]/C
+                         clock pessimism              0.180    15.040    
+                         clock uncertainty           -0.035    15.005    
+    SLICE_X1Y46          FDRE (Setup_fdre_C_CE)      -0.205    14.800    PWM_ControllerB/cnt_reg[1]
+  -------------------------------------------------------------------
+                         required time                         14.800    
+                         arrival time                          -7.469    
+  -------------------------------------------------------------------
+                         slack                                  7.331    
+
+Slack (MET) :             7.331ns  (required time - arrival time)
+  Source:                 PWM_ControllerB/clk_div_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerB/cnt_reg[2]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        2.321ns  (logic 0.580ns (24.991%)  route 1.741ns (75.009%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        -0.108ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.148ns
+    Clock Pessimism Removal (CPR):    0.180ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.627     5.148    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y51          FDRE (Prop_fdre_C_Q)         0.456     5.604 r  PWM_ControllerB/clk_div_reg[3]/Q
+                         net (fo=3, routed)           0.873     6.477    PWM_ControllerB/clk_div_reg[3]
+    SLICE_X0Y51          LUT4 (Prop_lut4_I1_O)        0.124     6.601 r  PWM_ControllerB/clk_div[3]_i_1__0/O
+                         net (fo=12, routed)          0.868     7.469    PWM_ControllerB/eqOp2_in
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          1.519    14.860    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[2]/C
+                         clock pessimism              0.180    15.040    
+                         clock uncertainty           -0.035    15.005    
+    SLICE_X1Y46          FDRE (Setup_fdre_C_CE)      -0.205    14.800    PWM_ControllerB/cnt_reg[2]
+  -------------------------------------------------------------------
+                         required time                         14.800    
+                         arrival time                          -7.469    
+  -------------------------------------------------------------------
+                         slack                                  7.331    
 
 
 
@@ -794,124 +796,19 @@ Slack (MET) :             7.488ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.247ns  (arrival time - required time)
-  Source:                 PWM_ControllerB/cnt_dir_reg/C
+Slack (MET) :             0.291ns  (arrival time - required time)
+  Source:                 PWM_ControllerB/cnt_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/cnt_reg[1]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.365ns  (logic 0.256ns (70.153%)  route 0.109ns (29.847%))
-  Logic Levels:           2  (CARRY4=1 LUT2=1)
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.994ns
-    Source Clock Delay      (SCD):    1.479ns
-    Clock Pessimism Removal (CPR):    0.502ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.596     1.479    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y47          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y47          FDRE (Prop_fdre_C_Q)         0.141     1.620 r  PWM_ControllerB/cnt_dir_reg/Q
-                         net (fo=8, routed)           0.109     1.729    PWM_ControllerB/cnt_dir_reg_n_0
-    SLICE_X1Y47          LUT2 (Prop_lut2_I1_O)        0.045     1.774 r  PWM_ControllerB/cnt[4]_i_5__0/O
-                         net (fo=1, routed)           0.000     1.774    PWM_ControllerB/cnt[4]_i_5__0_n_0
-    SLICE_X1Y47          CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.070     1.844 r  PWM_ControllerB/cnt_reg[4]_i_1__0/O[0]
-                         net (fo=1, routed)           0.000     1.844    PWM_ControllerB/cnt_reg[4]_i_1__0_n_7
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.867     1.994    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[1]/C
-                         clock pessimism             -0.502     1.492    
-    SLICE_X1Y47          FDRE (Hold_fdre_C_D)         0.105     1.597    PWM_ControllerB/cnt_reg[1]
-  -------------------------------------------------------------------
-                         required time                         -1.597    
-                         arrival time                           1.844    
-  -------------------------------------------------------------------
-                         slack                                  0.247    
-
-Slack (MET) :             0.250ns  (arrival time - required time)
-  Source:                 PWM_ControllerB/cnt_reg[1]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/cnt_dir_reg/D
+  Destination:            PWM_ControllerB/cnt_reg[0]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.354ns  (logic 0.186ns (52.600%)  route 0.168ns (47.400%))
-  Logic Levels:           1  (LUT6=1)
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.994ns
-    Source Clock Delay      (SCD):    1.479ns
-    Clock Pessimism Removal (CPR):    0.502ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.596     1.479    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[1]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y47          FDRE (Prop_fdre_C_Q)         0.141     1.620 f  PWM_ControllerB/cnt_reg[1]/Q
-                         net (fo=9, routed)           0.168     1.788    PWM_ControllerB/cnt_reg_n_0_[1]
-    SLICE_X0Y47          LUT6 (Prop_lut6_I3_O)        0.045     1.833 r  PWM_ControllerB/cnt_dir_i_1__0/O
-                         net (fo=1, routed)           0.000     1.833    PWM_ControllerB/cnt_dir_i_1__0_n_0
-    SLICE_X0Y47          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.867     1.994    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y47          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/C
-                         clock pessimism             -0.502     1.492    
-    SLICE_X0Y47          FDRE (Hold_fdre_C_D)         0.091     1.583    PWM_ControllerB/cnt_dir_reg
-  -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.833    
-  -------------------------------------------------------------------
-                         slack                                  0.250    
-
-Slack (MET) :             0.254ns  (arrival time - required time)
-  Source:                 PWM_ControllerA/clk_div_reg[1]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerA/clk_div_reg[3]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.358ns  (logic 0.184ns (51.423%)  route 0.174ns (48.577%))
-  Logic Levels:           1  (LUT4=1)
+  Data Path Delay:        0.382ns  (logic 0.186ns (48.738%)  route 0.196ns (51.262%))
+  Logic Levels:           1  (LUT1=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.991ns
-    Source Clock Delay      (SCD):    1.476ns
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
     Clock Pessimism Removal (CPR):    0.515ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -922,15 +819,15 @@ Slack (MET) :             0.254ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.593     1.476    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.596     1.479    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y49          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y46          FDRE (Prop_fdre_C_Q)         0.141     1.617 r  PWM_ControllerA/clk_div_reg[1]/Q
-                         net (fo=5, routed)           0.174     1.791    PWM_ControllerA/clk_div_reg[1]
-    SLICE_X4Y46          LUT4 (Prop_lut4_I2_O)        0.043     1.834 r  PWM_ControllerA/clk_div[3]_i_2/O
-                         net (fo=1, routed)           0.000     1.834    PWM_ControllerA/plusOp[3]
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[3]/D
+    SLICE_X0Y49          FDRE (Prop_fdre_C_Q)         0.141     1.620 f  PWM_ControllerB/cnt_reg[0]/Q
+                         net (fo=8, routed)           0.196     1.816    PWM_ControllerB/cnt_reg_n_0_[0]
+    SLICE_X0Y49          LUT1 (Prop_lut1_I0_O)        0.045     1.861 r  PWM_ControllerB/cnt[0]_i_1__0/O
+                         net (fo=1, routed)           0.000     1.861    PWM_ControllerB/cnt[0]_i_1__0_n_0
+    SLICE_X0Y49          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -939,31 +836,31 @@ Slack (MET) :             0.254ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.864     1.991    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[3]/C
-                         clock pessimism             -0.515     1.476    
-    SLICE_X4Y46          FDRE (Hold_fdre_C_D)         0.104     1.580    PWM_ControllerA/clk_div_reg[3]
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.867     1.994    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y49          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X0Y49          FDRE (Hold_fdre_C_D)         0.091     1.570    PWM_ControllerB/cnt_reg[0]
   -------------------------------------------------------------------
-                         required time                         -1.580    
-                         arrival time                           1.834    
+                         required time                         -1.570    
+                         arrival time                           1.861    
   -------------------------------------------------------------------
-                         slack                                  0.254    
+                         slack                                  0.291    
 
-Slack (MET) :             0.259ns  (arrival time - required time)
-  Source:                 PWM_ControllerA/clk_div_reg[0]/C
+Slack (MET) :             0.297ns  (arrival time - required time)
+  Source:                 PWM_ControllerA/clk_div_reg[2]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            PWM_ControllerA/clk_div_reg[2]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.382ns  (logic 0.189ns (49.450%)  route 0.193ns (50.550%))
+  Data Path Delay:        0.428ns  (logic 0.249ns (58.179%)  route 0.179ns (41.821%))
   Logic Levels:           1  (LUT3=1)
-  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.991ns
-    Source Clock Delay      (SCD):    1.476ns
-    Clock Pessimism Removal (CPR):    0.499ns
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.515ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -973,66 +870,15 @@ Slack (MET) :             0.259ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.593     1.476    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y44          FDRE (Prop_fdre_C_Q)         0.141     1.617 r  PWM_ControllerA/clk_div_reg[0]/Q
-                         net (fo=6, routed)           0.193     1.810    PWM_ControllerA/clk_div_reg[0]
-    SLICE_X4Y46          LUT3 (Prop_lut3_I0_O)        0.048     1.858 r  PWM_ControllerA/clk_div[2]_i_1/O
-                         net (fo=1, routed)           0.000     1.858    PWM_ControllerA/plusOp[2]
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.864     1.991    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/C
-                         clock pessimism             -0.499     1.492    
-    SLICE_X4Y46          FDRE (Hold_fdre_C_D)         0.107     1.599    PWM_ControllerA/clk_div_reg[2]
-  -------------------------------------------------------------------
-                         required time                         -1.599    
-                         arrival time                           1.858    
-  -------------------------------------------------------------------
-                         slack                                  0.259    
-
-Slack (MET) :             0.272ns  (arrival time - required time)
-  Source:                 PWM_ControllerA/clk_div_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerA/clk_div_reg[1]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.379ns  (logic 0.186ns (49.050%)  route 0.193ns (50.950%))
-  Logic Levels:           1  (LUT2=1)
-  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.991ns
-    Source Clock Delay      (SCD):    1.476ns
-    Clock Pessimism Removal (CPR):    0.499ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.593     1.476    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y44          FDRE (Prop_fdre_C_Q)         0.141     1.617 r  PWM_ControllerA/clk_div_reg[0]/Q
-                         net (fo=6, routed)           0.193     1.810    PWM_ControllerA/clk_div_reg[0]
-    SLICE_X4Y46          LUT2 (Prop_lut2_I0_O)        0.045     1.855 r  PWM_ControllerA/clk_div[1]_i_1/O
-                         net (fo=1, routed)           0.000     1.855    PWM_ControllerA/plusOp[1]
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/D
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.148     1.625 r  PWM_ControllerA/clk_div_reg[2]/Q
+                         net (fo=4, routed)           0.179     1.804    PWM_ControllerA/clk_div_reg[2]
+    SLICE_X6Y49          LUT3 (Prop_lut3_I2_O)        0.101     1.905 r  PWM_ControllerA/clk_div[2]_i_1/O
+                         net (fo=1, routed)           0.000     1.905    PWM_ControllerA/plusOp[2]
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1041,136 +887,30 @@ Slack (MET) :             0.272ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.864     1.991    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y46          FDRE                                         r  PWM_ControllerA/clk_div_reg[1]/C
-                         clock pessimism             -0.499     1.492    
-    SLICE_X4Y46          FDRE (Hold_fdre_C_D)         0.091     1.583    PWM_ControllerA/clk_div_reg[1]
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.865     1.992    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[2]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X6Y49          FDRE (Hold_fdre_C_D)         0.131     1.608    PWM_ControllerA/clk_div_reg[2]
   -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.855    
+                         required time                         -1.608    
+                         arrival time                           1.905    
   -------------------------------------------------------------------
-                         slack                                  0.272    
+                         slack                                  0.297    
 
-Slack (MET) :             0.277ns  (arrival time - required time)
-  Source:                 PWM_ControllerB/cnt_dir_reg/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/cnt_reg[2]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.395ns  (logic 0.286ns (72.420%)  route 0.109ns (27.580%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.994ns
-    Source Clock Delay      (SCD):    1.479ns
-    Clock Pessimism Removal (CPR):    0.502ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.596     1.479    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X0Y47          FDRE                                         r  PWM_ControllerB/cnt_dir_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y47          FDRE (Prop_fdre_C_Q)         0.141     1.620 r  PWM_ControllerB/cnt_dir_reg/Q
-                         net (fo=8, routed)           0.109     1.729    PWM_ControllerB/cnt_dir_reg_n_0
-    SLICE_X1Y47          CARRY4 (Prop_carry4_DI[0]_O[1])
-                                                      0.145     1.874 r  PWM_ControllerB/cnt_reg[4]_i_1__0/O[1]
-                         net (fo=1, routed)           0.000     1.874    PWM_ControllerB/cnt_reg[4]_i_1__0_n_6
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.867     1.994    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y47          FDRE                                         r  PWM_ControllerB/cnt_reg[2]/C
-                         clock pessimism             -0.502     1.492    
-    SLICE_X1Y47          FDRE (Hold_fdre_C_D)         0.105     1.597    PWM_ControllerB/cnt_reg[2]
-  -------------------------------------------------------------------
-                         required time                         -1.597    
-                         arrival time                           1.874    
-  -------------------------------------------------------------------
-                         slack                                  0.277    
-
-Slack (MET) :             0.285ns  (arrival time - required time)
-  Source:                 PWM_ControllerA/cnt_dir_reg/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerA/cnt_reg[1]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.435ns  (logic 0.256ns (58.818%)  route 0.179ns (41.182%))
-  Logic Levels:           2  (CARRY4=1 LUT2=1)
-  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.991ns
-    Source Clock Delay      (SCD):    1.476ns
-    Clock Pessimism Removal (CPR):    0.499ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.593     1.476    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y45          FDRE (Prop_fdre_C_Q)         0.141     1.617 r  PWM_ControllerA/cnt_dir_reg/Q
-                         net (fo=8, routed)           0.179     1.796    PWM_ControllerA/cnt_dir_reg_n_0
-    SLICE_X6Y45          LUT2 (Prop_lut2_I1_O)        0.045     1.841 r  PWM_ControllerA/cnt[4]_i_5/O
-                         net (fo=1, routed)           0.000     1.841    PWM_ControllerA/cnt[4]_i_5_n_0
-    SLICE_X6Y45          CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.070     1.911 r  PWM_ControllerA/cnt_reg[4]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.911    PWM_ControllerA/cnt_reg[4]_i_1_n_7
-    SLICE_X6Y45          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.864     1.991    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X6Y45          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/C
-                         clock pessimism             -0.499     1.492    
-    SLICE_X6Y45          FDRE (Hold_fdre_C_D)         0.134     1.626    PWM_ControllerA/cnt_reg[1]
-  -------------------------------------------------------------------
-                         required time                         -1.626    
-                         arrival time                           1.911    
-  -------------------------------------------------------------------
-                         slack                                  0.285    
-
-Slack (MET) :             0.286ns  (arrival time - required time)
-  Source:                 PWM_ControllerA/cnt_reg[5]/C
+Slack (MET) :             0.301ns  (arrival time - required time)
+  Source:                 PWM_ControllerA/cnt_reg[2]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            PWM_ControllerA/cnt_dir_reg/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.394ns  (logic 0.209ns (53.104%)  route 0.185ns (46.896%))
+  Data Path Delay:        0.409ns  (logic 0.186ns (45.476%)  route 0.223ns (54.524%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        0.016ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.991ns
-    Source Clock Delay      (SCD):    1.476ns
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
     Clock Pessimism Removal (CPR):    0.499ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -1181,15 +921,15 @@ Slack (MET) :             0.286ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.593     1.476    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X6Y46          FDRE                                         r  PWM_ControllerA/cnt_reg[5]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y46          FDRE (Prop_fdre_C_Q)         0.164     1.640 f  PWM_ControllerA/cnt_reg[5]/Q
-                         net (fo=9, routed)           0.185     1.825    PWM_ControllerA/cnt_reg_n_0_[5]
-    SLICE_X4Y45          LUT6 (Prop_lut6_I1_O)        0.045     1.870 r  PWM_ControllerA/cnt_dir_i_1/O
-                         net (fo=1, routed)           0.000     1.870    PWM_ControllerA/cnt_dir_i_1_n_0
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/D
+    SLICE_X7Y47          FDRE (Prop_fdre_C_Q)         0.141     1.618 f  PWM_ControllerA/cnt_reg[2]/Q
+                         net (fo=9, routed)           0.223     1.841    PWM_ControllerA/cnt_reg_n_0_[2]
+    SLICE_X5Y48          LUT6 (Prop_lut6_I0_O)        0.045     1.886 r  PWM_ControllerA/cnt_dir_i_1/O
+                         net (fo=1, routed)           0.000     1.886    PWM_ControllerA/cnt_dir_i_1_n_0
+    SLICE_X5Y48          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1198,27 +938,129 @@ Slack (MET) :             0.286ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.864     1.991    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y45          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/C
-                         clock pessimism             -0.499     1.492    
-    SLICE_X4Y45          FDRE (Hold_fdre_C_D)         0.092     1.584    PWM_ControllerA/cnt_dir_reg
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.865     1.992    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X5Y48          FDRE                                         r  PWM_ControllerA/cnt_dir_reg/C
+                         clock pessimism             -0.499     1.493    
+    SLICE_X5Y48          FDRE (Hold_fdre_C_D)         0.092     1.585    PWM_ControllerA/cnt_dir_reg
   -------------------------------------------------------------------
-                         required time                         -1.584    
-                         arrival time                           1.870    
+                         required time                         -1.585    
+                         arrival time                           1.886    
   -------------------------------------------------------------------
-                         slack                                  0.286    
+                         slack                                  0.301    
 
-Slack (MET) :             0.288ns  (arrival time - required time)
-  Source:                 PWM_ControllerB/cnt_reg[0]/C
+Slack (MET) :             0.322ns  (arrival time - required time)
+  Source:                 PWM_ControllerB/clk_div_reg[2]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerB/cnt_reg[0]/D
+  Destination:            PWM_ControllerB/clk_div_reg[3]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.379ns  (logic 0.186ns (49.132%)  route 0.193ns (50.868%))
-  Logic Levels:           1  (LUT1=1)
+  Data Path Delay:        0.414ns  (logic 0.227ns (54.794%)  route 0.187ns (45.206%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y51          FDRE (Prop_fdre_C_Q)         0.128     1.605 r  PWM_ControllerB/clk_div_reg[2]/Q
+                         net (fo=4, routed)           0.187     1.793    PWM_ControllerB/clk_div_reg[2]
+    SLICE_X0Y51          LUT4 (Prop_lut4_I0_O)        0.099     1.892 r  PWM_ControllerB/clk_div[3]_i_2__0/O
+                         net (fo=1, routed)           0.000     1.892    PWM_ControllerB/plusOp__0[3]
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.864     1.992    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[3]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X0Y51          FDRE (Hold_fdre_C_D)         0.092     1.569    PWM_ControllerB/clk_div_reg[3]
+  -------------------------------------------------------------------
+                         required time                         -1.569    
+                         arrival time                           1.892    
+  -------------------------------------------------------------------
+                         slack                                  0.322    
+
+Slack (MET) :             0.323ns  (arrival time - required time)
+  Source:                 PWM_ControllerB/clk_div_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerB/clk_div_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.430ns  (logic 0.187ns (43.451%)  route 0.243ns (56.549%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y51          FDRE (Prop_fdre_C_Q)         0.141     1.618 r  PWM_ControllerB/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.243     1.862    PWM_ControllerB/clk_div_reg[0]
+    SLICE_X0Y51          LUT3 (Prop_lut3_I0_O)        0.046     1.908 r  PWM_ControllerB/clk_div[2]_i_1__0/O
+                         net (fo=1, routed)           0.000     1.908    PWM_ControllerB/plusOp__0[2]
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.864     1.992    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[2]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X0Y51          FDRE (Hold_fdre_C_D)         0.107     1.584    PWM_ControllerB/clk_div_reg[2]
+  -------------------------------------------------------------------
+                         required time                         -1.584    
+                         arrival time                           1.908    
+  -------------------------------------------------------------------
+                         slack                                  0.323    
+
+Slack (MET) :             0.326ns  (arrival time - required time)
+  Source:                 PWM_ControllerB/cnt_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerB/cnt_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.431ns  (logic 0.249ns (57.714%)  route 0.182ns (42.286%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.993ns
     Source Clock Delay      (SCD):    1.478ns
@@ -1232,15 +1074,18 @@ Slack (MET) :             0.288ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
                          net (fo=28, routed)          0.595     1.478    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/C
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[4]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y46          FDRE (Prop_fdre_C_Q)         0.141     1.619 f  PWM_ControllerB/cnt_reg[0]/Q
-                         net (fo=8, routed)           0.193     1.812    PWM_ControllerB/cnt_reg_n_0_[0]
-    SLICE_X1Y46          LUT1 (Prop_lut1_I0_O)        0.045     1.857 r  PWM_ControllerB/cnt[0]_i_1__0/O
-                         net (fo=1, routed)           0.000     1.857    PWM_ControllerB/cnt[0]_i_1__0_n_0
-    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/D
+    SLICE_X1Y46          FDRE (Prop_fdre_C_Q)         0.141     1.619 r  PWM_ControllerB/cnt_reg[4]/Q
+                         net (fo=9, routed)           0.182     1.802    PWM_ControllerB/cnt_reg_n_0_[4]
+    SLICE_X1Y46          LUT2 (Prop_lut2_I1_O)        0.045     1.847 r  PWM_ControllerB/cnt[4]_i_2__0/O
+                         net (fo=1, routed)           0.000     1.847    PWM_ControllerB/cnt[4]_i_2__0_n_0
+    SLICE_X1Y46          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.063     1.910 r  PWM_ControllerB/cnt_reg[4]_i_1__0/O[3]
+                         net (fo=1, routed)           0.000     1.910    PWM_ControllerB/cnt_reg[4]_i_1__0_n_4
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1249,30 +1094,30 @@ Slack (MET) :             0.288ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
                          net (fo=28, routed)          0.866     1.993    PWM_ControllerB/clk_IBUF_BUFG
-    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/C
+    SLICE_X1Y46          FDRE                                         r  PWM_ControllerB/cnt_reg[4]/C
                          clock pessimism             -0.515     1.478    
-    SLICE_X1Y46          FDRE (Hold_fdre_C_D)         0.091     1.569    PWM_ControllerB/cnt_reg[0]
+    SLICE_X1Y46          FDRE (Hold_fdre_C_D)         0.105     1.583    PWM_ControllerB/cnt_reg[4]
   -------------------------------------------------------------------
-                         required time                         -1.569    
-                         arrival time                           1.857    
+                         required time                         -1.583    
+                         arrival time                           1.910    
   -------------------------------------------------------------------
-                         slack                                  0.288    
+                         slack                                  0.326    
 
-Slack (MET) :             0.292ns  (arrival time - required time)
-  Source:                 PWM_ControllerA/clk_div_reg[0]/C
+Slack (MET) :             0.327ns  (arrival time - required time)
+  Source:                 PWM_ControllerA/cnt_reg[1]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            PWM_ControllerA/clk_div_reg[0]/D
+  Destination:            PWM_ControllerA/cnt_reg[2]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.383ns  (logic 0.186ns (48.573%)  route 0.197ns (51.427%))
-  Logic Levels:           1  (LUT1=1)
+  Data Path Delay:        0.432ns  (logic 0.251ns (58.047%)  route 0.181ns (41.953%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.991ns
-    Source Clock Delay      (SCD):    1.476ns
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
     Clock Pessimism Removal (CPR):    0.515ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -1283,15 +1128,18 @@ Slack (MET) :             0.292ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.593     1.476    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y44          FDRE (Prop_fdre_C_Q)         0.141     1.617 f  PWM_ControllerA/clk_div_reg[0]/Q
-                         net (fo=6, routed)           0.197     1.814    PWM_ControllerA/clk_div_reg[0]
-    SLICE_X4Y44          LUT1 (Prop_lut1_I0_O)        0.045     1.859 r  PWM_ControllerA/clk_div[0]_i_1/O
-                         net (fo=1, routed)           0.000     1.859    PWM_ControllerA/plusOp[0]
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/D
+    SLICE_X7Y47          FDRE (Prop_fdre_C_Q)         0.141     1.618 r  PWM_ControllerA/cnt_reg[1]/Q
+                         net (fo=9, routed)           0.181     1.800    PWM_ControllerA/cnt_reg_n_0_[1]
+    SLICE_X7Y47          LUT2 (Prop_lut2_I0_O)        0.045     1.845 r  PWM_ControllerA/cnt[4]_i_4/O
+                         net (fo=1, routed)           0.000     1.845    PWM_ControllerA/cnt[4]_i_4_n_0
+    SLICE_X7Y47          CARRY4 (Prop_carry4_S[1]_O[1])
+                                                      0.065     1.910 r  PWM_ControllerA/cnt_reg[4]_i_1/O[1]
+                         net (fo=1, routed)           0.000     1.910    PWM_ControllerA/cnt_reg[4]_i_1_n_6
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1300,16 +1148,172 @@ Slack (MET) :             0.292ns  (arrival time - required time)
                          net (fo=0)                   0.000     0.000    clk
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=28, routed)          0.864     1.991    PWM_ControllerA/clk_IBUF_BUFG
-    SLICE_X4Y44          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
-                         clock pessimism             -0.515     1.476    
-    SLICE_X4Y44          FDRE (Hold_fdre_C_D)         0.091     1.567    PWM_ControllerA/clk_div_reg[0]
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.865     1.992    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[2]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X7Y47          FDRE (Hold_fdre_C_D)         0.105     1.582    PWM_ControllerA/cnt_reg[2]
   -------------------------------------------------------------------
-                         required time                         -1.567    
-                         arrival time                           1.859    
+                         required time                         -1.582    
+                         arrival time                           1.910    
   -------------------------------------------------------------------
-                         slack                                  0.292    
+                         slack                                  0.327    
+
+Slack (MET) :             0.329ns  (arrival time - required time)
+  Source:                 PWM_ControllerB/clk_div_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerB/cnt_reg[0]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.563ns  (logic 0.186ns (33.023%)  route 0.377ns (66.977%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.273ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.244ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y51          FDRE                                         r  PWM_ControllerB/clk_div_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y51          FDRE (Prop_fdre_C_Q)         0.141     1.618 f  PWM_ControllerB/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.157     1.775    PWM_ControllerB/clk_div_reg[0]
+    SLICE_X0Y51          LUT4 (Prop_lut4_I3_O)        0.045     1.820 r  PWM_ControllerB/clk_div[3]_i_1__0/O
+                         net (fo=12, routed)          0.221     2.040    PWM_ControllerB/eqOp2_in
+    SLICE_X0Y49          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.867     1.994    PWM_ControllerB/clk_IBUF_BUFG
+    SLICE_X0Y49          FDRE                                         r  PWM_ControllerB/cnt_reg[0]/C
+                         clock pessimism             -0.244     1.750    
+    SLICE_X0Y49          FDRE (Hold_fdre_C_CE)       -0.039     1.711    PWM_ControllerB/cnt_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.711    
+                         arrival time                           2.040    
+  -------------------------------------------------------------------
+                         slack                                  0.329    
+
+Slack (MET) :             0.330ns  (arrival time - required time)
+  Source:                 PWM_ControllerA/cnt_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerA/cnt_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.435ns  (logic 0.256ns (58.796%)  route 0.179ns (41.204%))
+  Logic Levels:           2  (CARRY4=1 LUT2=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y47          FDRE (Prop_fdre_C_Q)         0.141     1.618 r  PWM_ControllerA/cnt_reg[1]/Q
+                         net (fo=9, routed)           0.179     1.798    PWM_ControllerA/cnt_reg_n_0_[1]
+    SLICE_X7Y47          LUT2 (Prop_lut2_I0_O)        0.045     1.843 r  PWM_ControllerA/cnt[4]_i_5/O
+                         net (fo=1, routed)           0.000     1.843    PWM_ControllerA/cnt[4]_i_5_n_0
+    SLICE_X7Y47          CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.070     1.913 r  PWM_ControllerA/cnt_reg[4]_i_1/O[0]
+                         net (fo=1, routed)           0.000     1.913    PWM_ControllerA/cnt_reg[4]_i_1_n_7
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.865     1.992    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X7Y47          FDRE                                         r  PWM_ControllerA/cnt_reg[1]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X7Y47          FDRE (Hold_fdre_C_D)         0.105     1.582    PWM_ControllerA/cnt_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.582    
+                         arrival time                           1.913    
+  -------------------------------------------------------------------
+                         slack                                  0.330    
+
+Slack (MET) :             0.331ns  (arrival time - required time)
+  Source:                 PWM_ControllerA/clk_div_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            PWM_ControllerA/clk_div_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.452ns  (logic 0.209ns (46.228%)  route 0.243ns (53.772%))
+  Logic Levels:           1  (LUT1=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.594     1.477    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y49          FDRE (Prop_fdre_C_Q)         0.164     1.641 f  PWM_ControllerA/clk_div_reg[0]/Q
+                         net (fo=6, routed)           0.243     1.884    PWM_ControllerA/clk_div_reg[0]
+    SLICE_X6Y49          LUT1 (Prop_lut1_I0_O)        0.045     1.929 r  PWM_ControllerA/clk_div[0]_i_1/O
+                         net (fo=1, routed)           0.000     1.929    PWM_ControllerA/plusOp[0]
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=28, routed)          0.865     1.992    PWM_ControllerA/clk_IBUF_BUFG
+    SLICE_X6Y49          FDRE                                         r  PWM_ControllerA/clk_div_reg[0]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X6Y49          FDRE (Hold_fdre_C_D)         0.121     1.598    PWM_ControllerA/clk_div_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.598    
+                         arrival time                           1.929    
+  -------------------------------------------------------------------
+                         slack                                  0.331    
 
 
 
@@ -1323,36 +1327,36 @@ Period(ns):         10.000
 Sources:            { clk }
 
 Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
-Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y1  clk_IBUF_BUFG_inst/I
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X4Y44    PWM_ControllerA/clk_div_reg[0]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X4Y46    PWM_ControllerA/clk_div_reg[1]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X4Y46    PWM_ControllerA/clk_div_reg[2]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X4Y46    PWM_ControllerA/clk_div_reg[3]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X4Y45    PWM_ControllerA/cnt_dir_reg/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X5Y45    PWM_ControllerA/cnt_reg[0]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y45    PWM_ControllerA/cnt_reg[1]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y45    PWM_ControllerA/cnt_reg[2]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y45    PWM_ControllerA/cnt_reg[3]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X4Y44    PWM_ControllerA/clk_div_reg[0]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X4Y46    PWM_ControllerA/clk_div_reg[1]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X4Y46    PWM_ControllerA/clk_div_reg[2]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X4Y46    PWM_ControllerA/clk_div_reg[3]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X4Y45    PWM_ControllerA/cnt_dir_reg/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X5Y45    PWM_ControllerA/cnt_reg[0]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y45    PWM_ControllerA/cnt_reg[1]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y45    PWM_ControllerA/cnt_reg[2]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y45    PWM_ControllerA/cnt_reg[3]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y45    PWM_ControllerA/cnt_reg[4]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y46    PWM_ControllerB/clk_div_reg[0]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y46    PWM_ControllerB/clk_div_reg[1]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y46    PWM_ControllerB/clk_div_reg[2]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y46    PWM_ControllerB/clk_div_reg[3]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y47    PWM_ControllerB/cnt_dir_reg/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y46    PWM_ControllerB/cnt_reg[0]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[1]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[2]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[3]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[4]/C
+Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y2  clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[1]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[2]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[3]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X5Y48    PWM_ControllerA/cnt_dir_reg/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X7Y48    PWM_ControllerA/cnt_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X7Y47    PWM_ControllerA/cnt_reg[1]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X7Y47    PWM_ControllerA/cnt_reg[2]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X7Y47    PWM_ControllerA/cnt_reg[3]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[0]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[0]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[1]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[1]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[2]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[2]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[3]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X6Y49    PWM_ControllerA/clk_div_reg[3]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X5Y48    PWM_ControllerA/cnt_dir_reg/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X5Y48    PWM_ControllerA/cnt_dir_reg/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y49    PWM_ControllerB/cnt_dir_reg/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y49    PWM_ControllerB/cnt_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y46    PWM_ControllerB/cnt_reg[1]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y46    PWM_ControllerB/cnt_reg[2]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y46    PWM_ControllerB/cnt_reg[3]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y46    PWM_ControllerB/cnt_reg[4]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[5]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[6]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y47    PWM_ControllerB/cnt_reg[7]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y49    PWM_ControllerB/pulse_reg/C
 
 
 
