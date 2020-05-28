@@ -45,7 +45,7 @@ architecture Behavioral of PWM_Module is
 
 	signal clk_div: std_logic_vector(clk_resolution-1 downto 0) := clk_div_reset;
 	signal clk_div_max : std_logic_vector(clk_resolution-1 downto 0) := clk_divider; 
-	-- divides the 100MHz clock down to 21kHz
+	-- divides the 100MHz clock down to 22kHz
 
   signal cnt: std_logic_vector(resolution-1 downto 0) := cnt_reset;
   signal cnt_min : std_logic_vector(resolution-1 downto 0) := X"00";
@@ -60,7 +60,7 @@ process(clk) -- Counting. Increments counter on rising edge of clock for everyti
 begin
 	if rising_edge(clk) then
 
-		if clk_div = clk_div_max then-- divides the 100MHz clock down to 20kHz
+		if clk_div = clk_div_max then-- divides the 100MHz clock down to 22kHz
 			clk_div <= clk_div_reset;
 
 			if cnt = cnt_max-1 then

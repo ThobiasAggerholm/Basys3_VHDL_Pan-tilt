@@ -39,17 +39,7 @@ port (
 clk : in STD_LOGIC;
 Chan_A : in STD_LOGIC;
 Chan_B : in STD_LOGIC;
-Hall_Counter : out STD_LOGIC_VECTOR (Counter_size-1 downto 0);
-
-Tdirection : out std_logic;
-TA_prev : out std_logic;
-TB_prev : out std_logic;
-TA_curr : out std_logic;
-TB_curr : out std_logic;
-
-TA_in : out std_logic_vector(1 downto 0);
-TB_in : out std_logic_vector(1 downto 0)
-
+Hall_Counter : out STD_LOGIC_VECTOR (Counter_size-1 downto 0)
 );
 end Hall_Modul;
 
@@ -72,14 +62,7 @@ signal dir_def : std_logic := '0';
 begin
 Hall_counter <= counter;
 
-Tdirection <= direction;
-TA_prev <= A_prev;
-TB_prev <= B_prev;
-TA_curr <= A_curr;
-TB_curr <= B_curr;
 
-TA_in <= A_in;
-TB_in <= B_in;
 
 process(clk)
 begin
